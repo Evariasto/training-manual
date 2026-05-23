@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import MuscleGroupPage from './components/MuscleGroupPage.jsx'
+import BodyMapPage from './components/BodyMapPage.jsx'
 import { muscleGroups } from './data/muscles.js'
 import './App.css'
 
+const MODULES = [
+  { id: 'mod1', label: 'Manual Muscular', icon: '📖', desc: 'Grupos, exercícios e técnica' },
+  { id: 'mod2', label: 'Mapa Interativo', icon: '🫀', desc: 'Boneco com clique muscular' },
+]
+
 export default function App() {
+  const [activeModule, setActiveModule] = useState('mod1')
   const [activeGroupId, setActiveGroupId] = useState(muscleGroups[0].id)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -12,12 +19,17 @@ export default function App() {
 
   function handleSelectGroup(id) {
     setActiveGroupId(id)
+    setActiveModule('mod1')
+    setSidebarOpen(false)
+  }
+
+  function handleModuleSelect(id) {
+    setActiveModule(id)
     setSidebarOpen(false)
   }
 
   return (
     <div className="app-wrapper">
-      {/* Overlay for mobile sidebar */}
       {sidebarOpen && (
         <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />
       )}
@@ -37,21 +49,40 @@ export default function App() {
           <span className="logo-icon">💪</span>
           <span className="logo-text">Training Manual</span>
         </div>
-        <div className="header-badge">Módulo 1</div>
+
+        {/* Module tabs in header */}
+        <div className="header-modules">
+          {MODULES.map(m => (
+            <button
+              key={m.id}
+              className={`hmod-btn ${activeModule === m.id ? 'active' : ''}`}
+              onClick={() => handleModuleSelect(m.id)}
+            >
+              {m.icon} {m.label}
+            </button>
+          ))}
+        </div>
       </header>
 
       <div className="app-body">
-        {/* Sidebar */}
-        <Sidebar
-          groups={muscleGroups}
-          activeId={activeGroupId}
-          onSelect={handleSelectGroup}
-          isOpen={sidebarOpen}
-        />
+        {/* Sidebar — only shown for Module 1 */}
+        {activeModule === 'mod1' && (
+          <Sidebar
+            groups={muscleGroups}
+            activeId={activeGroupId}
+            onSelect={handleSelectGroup}
+            isOpen={sidebarOpen}
+          />
+        )}
 
         {/* Main content */}
-        <main className="app-main">
-          <MuscleGroupPage group={activeGroup} />
+        <main className={`app-main ${activeModule === 'mod1' ? 'with-sidebar' : ''}`}>
+          {activeModule === 'mod1' && (
+            <MuscleGroupPage group={activeGroup} />
+          )}
+          {activeModule === 'mod2' && (
+            <BodyMapPage />
+          )}
         </main>
       </div>
     </div>

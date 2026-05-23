@@ -107,9 +107,47 @@
   min-width: 0;
 }
 
+/* Module tabs in header */
+.header-modules {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.hmod-btn {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.hmod-btn:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.hmod-btn.active {
+  background: var(--gradient-subtle);
+  border-color: rgba(229,62,62,0.25);
+  color: var(--red);
+  font-weight: 700;
+}
+
 /* Desktop sidebar always visible */
 @media (min-width: 768px) {
-  .app-main { margin-left: 240px; }
+  .app-main.with-sidebar { margin-left: 240px; }
   .ham-btn { display: none; }
   .sidebar-overlay { display: none !important; }
+}
+
+@media (max-width: 500px) {
+  .hmod-btn { font-size: 11px; padding: 5px 8px; }
 }
