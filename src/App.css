@@ -15,8 +15,8 @@
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 20px 0 12px;
+  gap: 10px;
+  padding: 0 16px 0 12px;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,0.35);
 }
@@ -25,36 +25,24 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: 1;
+  flex-shrink: 0;
 }
-.logo-icon { font-size: 22px; line-height: 1; }
+.logo-icon { font-size: 20px; line-height: 1; }
 .logo-text {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.3px;
-}
-
-.header-badge {
-  font-size: 11px;
-  font-weight: 700;
-  background: var(--gradient-subtle);
-  border: 1px solid rgba(229,62,62,0.25);
-  color: var(--red);
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
 /* ─── Hamburger ───────────────────────────────────────────── */
 .ham-btn {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background: none;
   border: none;
   cursor: pointer;
@@ -72,7 +60,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 20px;
+  width: 18px;
 }
 .ham-icon span {
   display: block;
@@ -85,6 +73,153 @@
 .ham-icon.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .ham-icon.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .ham-icon.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Active module chip (mobile) ─────────────────────────── */
+.active-mod-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.18s;
+  margin-left: auto;
+}
+.active-mod-chip:hover { border-color: var(--mc, var(--border)); }
+.amc-label { font-weight: 700; }
+.amc-chevron { font-size: 11px; color: var(--text-muted); }
+
+/* Hide chip on desktop */
+@media (min-width: 860px) { .active-mod-chip { display: none; } }
+
+/* ─── Desktop module tabs ──────────────────────────────────── */
+.header-modules {
+  display: none;
+  gap: 3px;
+  margin-left: auto;
+}
+@media (min-width: 860px) { .header-modules { display: flex; } }
+
+.hmod-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  font-family: inherit;
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 100px;
+}
+.hmod-btn:hover { background: var(--surface2); color: var(--text); }
+.hmod-btn.active {
+  background: color-mix(in srgb, var(--mc) 10%, transparent);
+  border-color: color-mix(in srgb, var(--mc) 35%, transparent);
+  color: var(--mc);
+}
+
+.hmod-num {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  line-height: 1;
+}
+.hmod-btn.active .hmod-num { opacity: 1; }
+
+.hmod-icon { font-size: 16px; line-height: 1; }
+
+.hmod-label {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+}
+.hmod-btn.active .hmod-label { font-weight: 800; }
+
+/* ─── Mobile module dropdown ──────────────────────────────── */
+.module-dropdown {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  left: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 860px) { .module-dropdown { display: none !important; } }
+
+.mdrop-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.mdrop-btn:last-child { border-bottom: none; }
+.mdrop-btn:hover { background: var(--surface2); }
+.mdrop-btn.active { background: color-mix(in srgb, var(--mc) 8%, transparent); }
+
+.mdrop-num-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--mc) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mc) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mdrop-num {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--mc);
+}
+
+.mdrop-text { display: flex; align-items: center; gap: 8px; flex: 1; }
+.mdrop-icon { font-size: 20px; flex-shrink: 0; }
+.mdrop-info { flex: 1; }
+.mdrop-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.mdrop-btn.active .mdrop-title { color: var(--mc); }
+.mdrop-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.mdrop-check {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--mc);
+  flex-shrink: 0;
+}
 
 /* ─── Body / Sidebar / Main ────────────────────────────────── */
 .app-body {
@@ -107,47 +242,8 @@
   min-width: 0;
 }
 
-/* Module tabs in header */
-.header-modules {
-  display: flex;
-  gap: 4px;
-  margin-left: auto;
-}
-
-.hmod-btn {
-  font-size: 12px;
-  font-weight: 600;
-  font-family: inherit;
-  padding: 6px 12px;
-  background: none;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.18s;
-  -webkit-tap-highlight-color: transparent;
-  white-space: nowrap;
-}
-
-.hmod-btn:hover {
-  background: var(--surface2);
-  color: var(--text);
-}
-
-.hmod-btn.active {
-  background: var(--gradient-subtle);
-  border-color: rgba(229,62,62,0.25);
-  color: var(--red);
-  font-weight: 700;
-}
-
-/* Desktop sidebar always visible */
+/* Desktop sidebar push */
 @media (min-width: 768px) {
   .app-main.with-sidebar { margin-left: 240px; }
   .ham-btn { display: none; }
-  .sidebar-overlay { display: none !important; }
-}
-
-@media (max-width: 500px) {
-  .hmod-btn { font-size: 11px; padding: 5px 8px; }
 }
