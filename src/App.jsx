@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import MuscleGroupPage from './components/MuscleGroupPage.jsx'
 import BodyMapPage from './components/BodyMapPage.jsx'
+import ProtocolPage from './components/ProtocolPage.jsx'
 import { muscleGroups } from './data/muscles.js'
+import { LEGS_PROTOCOL } from './data/legsprotocol.js'
 import './App.css'
 
 const MODULES = [
-  { id: 'mod1', label: 'Manual Muscular', icon: '📖', desc: 'Grupos, exercícios e técnica' },
-  { id: 'mod2', label: 'Mapa Interativo', icon: '🫀', desc: 'Boneco com clique muscular' },
+  { id: 'mod1', label: 'Manual Muscular', icon: '📖' },
+  { id: 'mod2', label: 'Mapa Interativo', icon: '🫀' },
+  { id: 'mod3', label: 'Protocolo Legs', icon: '🦵' },
 ]
 
 export default function App() {
@@ -27,6 +30,8 @@ export default function App() {
     setActiveModule(id)
     setSidebarOpen(false)
   }
+
+  const hasSidebar = activeModule === 'mod1'
 
   return (
     <div className="app-wrapper">
@@ -50,7 +55,6 @@ export default function App() {
           <span className="logo-text">Training Manual</span>
         </div>
 
-        {/* Module tabs in header */}
         <div className="header-modules">
           {MODULES.map(m => (
             <button
@@ -65,8 +69,7 @@ export default function App() {
       </header>
 
       <div className="app-body">
-        {/* Sidebar — only shown for Module 1 */}
-        {activeModule === 'mod1' && (
+        {hasSidebar && (
           <Sidebar
             groups={muscleGroups}
             activeId={activeGroupId}
@@ -75,14 +78,10 @@ export default function App() {
           />
         )}
 
-        {/* Main content */}
-        <main className={`app-main ${activeModule === 'mod1' ? 'with-sidebar' : ''}`}>
-          {activeModule === 'mod1' && (
-            <MuscleGroupPage group={activeGroup} />
-          )}
-          {activeModule === 'mod2' && (
-            <BodyMapPage />
-          )}
+        <main className={`app-main ${hasSidebar ? 'with-sidebar' : ''}`}>
+          {activeModule === 'mod1' && <MuscleGroupPage group={activeGroup} />}
+          {activeModule === 'mod2' && <BodyMapPage />}
+          {activeModule === 'mod3' && <ProtocolPage protocol={LEGS_PROTOCOL} />}
         </main>
       </div>
     </div>

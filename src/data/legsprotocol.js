@@ -1,0 +1,454 @@
+export const LEGS_PROTOCOL = {
+  id: 'legs',
+  title: 'Protocolo Legs',
+  subtitle: 'Anatomia, exercícios, montagem e periodização para pernas completas',
+  icon: '🦵',
+  color: '#48BB78',
+
+  chapters: [
+    // ─────────────────── CAP 1: ANATOMIA ───────────────────────────
+    {
+      id: 'anatomia',
+      number: 1,
+      title: 'Anatomia dos Membros Inferiores',
+      icon: '🧬',
+      intro: 'O grupo muscular mais volumoso do corpo humano. Conhecer cada músculo é o primeiro passo para treinar com inteligência — e a base para saber o que você está realmente treinando.',
+      sections: [
+        {
+          type: 'muscle-cards',
+          muscles: [
+            {
+              name: 'Quadríceps',
+              scientificName: 'Musculus Quadriceps Femoris',
+              icon: '🔴',
+              heads: ['Reto Femoral', 'Vasto Lateral', 'Vasto Medial (VMO)', 'Vasto Intermediário'],
+              function: 'Extensão do joelho e flexão do quadril (reto femoral). Principal motor do agachamento, leg press e da corrida.',
+              tip: 'O VMO — a "gota" acima do joelho — é o mais difícil de desenvolver e o mais valorizado em palco. Ativado em extensão completa e no agachamento profundo.',
+              keyFact: '4 cabeças — o maior grupo muscular da coxa',
+            },
+            {
+              name: 'Isquiotibiais',
+              scientificName: 'Musculi Ischiocruris',
+              icon: '🟠',
+              heads: ['Bíceps Femoral — cabeça longa', 'Bíceps Femoral — cabeça curta', 'Semitendíneo', 'Semimembranoso'],
+              function: 'Flexão do joelho, extensão do quadril e rotação da tíbia. Antagonista direto do quadríceps e essencial para a integridade do joelho.',
+              tip: 'São músculos biarticulares — cruzam joelho E quadril. Para ativação total, inclua exercícios que fletam o joelho (flexora) E que estendem o quadril (RDL, stiff).',
+              keyFact: 'Frequentemente subdesenvolvido em relação ao quad — gera desequilíbrios e risco de lesão',
+            },
+            {
+              name: 'Glúteos',
+              scientificName: 'Musculi Glutaei',
+              icon: '🟡',
+              heads: ['Glúteo Máximo', 'Glúteo Médio', 'Glúteo Mínimo'],
+              function: 'Extensão, abdução e rotação externa do quadril. O glúteo máximo é o maior músculo do corpo humano. O médio estabiliza a pelve durante a marcha.',
+              tip: 'Glúteo médio e mínimo criam a rotundidade lateral — treine abdução de quadril além de extensão. Hip thrust abdutor + extensão = cobertura completa.',
+              keyFact: 'Maior músculo do corpo — motor primário em qualquer extensão de quadril explosiva',
+            },
+            {
+              name: 'Panturrilha',
+              scientificName: 'Musculi Surales',
+              icon: '🟢',
+              heads: ['Gastrocnêmio — cabeça medial', 'Gastrocnêmio — cabeça lateral', 'Sóleo', 'Tibial Anterior'],
+              function: 'Flexão plantar (elevar o calcanhar). Gastrocnêmio é biarticular e cruza o joelho; sóleo é monoarticular e mais profundo.',
+              tip: 'Treine gastrocnêmio com joelho estendido (panturrilha em pé) e sóleo com joelho flexionado (panturrilha sentada). Fazer apenas um é treinar metade da panturrilha.',
+              keyFact: 'Alta densidade de fibras tipo 1 — responde a alto volume e alta frequência (3–4×/semana)',
+            },
+            {
+              name: 'Adutores',
+              scientificName: 'Musculi Adductores',
+              icon: '🔵',
+              heads: ['Adutor Longo', 'Adutor Curto', 'Adutor Magno', 'Grácil', 'Pectíneo'],
+              function: 'Adução do quadril (fechamento das pernas). O adutor magno tem função secundária importante na extensão do quadril.',
+              tip: 'O adutor magno contribui significativamente para o agachamento profundo e terra. Agachamento sumô e adutor na máquina cobrem esse grupo.',
+              keyFact: 'Grupo muitas vezes esquecido — cria a forma interna da coxa e o "separation" em palco',
+            },
+          ],
+        },
+      ],
+    },
+
+    // ─────────────────── CAP 2: EXERCÍCIOS ─────────────────────────
+    {
+      id: 'exercicios',
+      number: 2,
+      title: 'Arsenal de Exercícios',
+      icon: '🏋️',
+      intro: 'Cada exercício tem um papel específico dentro do protocolo. Entender o padrão de movimento permite substituir, progredir e variar sem perder qualidade de estímulo.',
+      sections: [
+        {
+          type: 'exercise-categories',
+          categories: [
+            {
+              name: 'Dominantes de Joelho — Quadríceps',
+              icon: '🏋️',
+              color: '#48BB78',
+              exercises: [
+                {
+                  name: 'Agachamento Livre',
+                  difficulty: 'advanced',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Rack'],
+                  musclesFocus: 'Quadríceps + Glúteos + Isquiotibiais + Core',
+                  execution: [
+                    'Barra sobre os trapézios (low bar) ou deltoides (high bar) — nunca no pescoço',
+                    'Pés na largura dos ombros com bico ligeiramente para fora (30–45°)',
+                    'Desça mantendo o tronco reto, joelhos alinhados com os pés',
+                    'Profundidade mínima: coxa paralela ao solo — abaixo quando possível',
+                    'Empurre pelo calcanhar ao subir, finalize com extensão de quadril completa',
+                  ],
+                  tip: 'Vídeo mental: imagine que está empurrando o chão para longe de você, não que está subindo.',
+                },
+                {
+                  name: 'Leg Press 45°',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Máquina'],
+                  musclesFocus: 'Quadríceps + Glúteos',
+                  execution: [
+                    'Pés na largura dos ombros na plataforma',
+                    'Pés altos na plataforma = mais glúteo; pés baixos = mais quadríceps',
+                    'Desça até ~90° no joelho — não arredonde a lombar no fundo',
+                    'Empurre sem travar completamente os joelhos no topo',
+                  ],
+                  tip: 'Pés altos e abertos = glúteo. Pés baixos e fechados = quad puro. Alterne conforme a prioridade.',
+                },
+                {
+                  name: 'Hack Squat',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Máquina'],
+                  musclesFocus: 'Quadríceps (VMO em especial)',
+                  execution: [
+                    'Pés posicionados baixos e à frente na plataforma',
+                    'Desça profundo mantendo lombar no encosto',
+                    'Joelhos apontam para fora — não deixe colapsar para dentro',
+                    'Pés próximos e baixos maximizam ativação do VMO',
+                  ],
+                  tip: 'É a máquina que melhor isola quad com sobrecarga segura. Substituto valioso do agachamento livre.',
+                },
+                {
+                  name: 'Afundo Búlgaro',
+                  difficulty: 'intermediate',
+                  pattern: 'Unilateral Composto',
+                  equipment: ['Halters', 'Barra', 'Banco'],
+                  musclesFocus: 'Quadríceps + Glúteos + Equilíbrio',
+                  execution: [
+                    'Pé traseiro elevado no banco — crural apoiado no bico do pé',
+                    'Passo longo para o pé dianteiro — tronco ereto',
+                    'Desça até a coxa dianteira ficar paralela ao solo',
+                    'Empurre pelo calcanhar dianteiro ao subir',
+                  ],
+                  tip: 'Considerado o exercício unilateral mais eficaz para hipertrofia de pernas. Elimina desequilíbrios bilaterais.',
+                },
+                {
+                  name: 'Cadeira Extensora',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Máquina'],
+                  musclesFocus: 'Quadríceps — isolamento total',
+                  execution: [
+                    'Alinhamento do joelho com o pivô da máquina',
+                    'Suba até extensão completa — fundamental para ativar o VMO',
+                    'Desça com controle — 2–3 segundos na fase excêntrica',
+                    'Evite impulso no início do movimento',
+                  ],
+                  tip: 'Use como pré-exaustão antes dos compostos ou como finalizador para pump. Ótimo para conexão mente-músculo.',
+                },
+              ],
+            },
+            {
+              name: 'Dominantes de Quadril — Posterior',
+              icon: '🏆',
+              color: '#ED8936',
+              exercises: [
+                {
+                  name: 'Terra Romeno (RDL)',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Halters'],
+                  musclesFocus: 'Isquiotibiais + Glúteos + Eretores da Espinha',
+                  execution: [
+                    'Barra na frente das coxas, postura ereta inicial',
+                    'Empurre o quadril para trás — não apenas incline o tronco',
+                    'Desça até sentir forte alongamento nos posteriores da coxa',
+                    'Joelhos levemente flexionados (não rígidos, não dobrados)',
+                    'Suba espremendo glúteos e empurrando o quadril para frente',
+                  ],
+                  tip: 'A barra deve roçar as pernas o tempo todo. Se ela se afastar do corpo, você está usando demais as costas.',
+                },
+                {
+                  name: 'Hip Thrust',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral/Unilateral',
+                  equipment: ['Barra', 'Banco'],
+                  musclesFocus: 'Glúteo Máximo — maior ativação EMG',
+                  execution: [
+                    'Banco abaixo das escápulas, barra sobre o dobra do quadril com almofada',
+                    'Pés na largura dos ombros, joelhos a 90° no topo do movimento',
+                    'Empurre o quadril ao máximo — squeeze intenso do glúteo no topo',
+                    'Não hiperetenda a lombar — mantenha core ativo',
+                  ],
+                  tip: 'Maior ativação eletromiográfica do glúteo máximo de todos os exercícios. Inclua em todo treino com foco em glúteos.',
+                },
+                {
+                  name: 'Cadeira Flexora',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Máquina deitada ou sentada'],
+                  musclesFocus: 'Isquiotibiais — isolamento',
+                  execution: [
+                    'Joelho alinhado com o pivô da máquina',
+                    'Pés em flexão dorsal (bico puxado) para maior ativação',
+                    'Amplitude total — desça até o limite, suba completamente',
+                    'Versão sentada: maior ativação do semitendinoso pela posição do quadril',
+                  ],
+                  tip: 'Alterne entre versão deitada e sentada no mesmo mesociclo — ativam proporções diferentes dos isquiotibiais.',
+                },
+                {
+                  name: 'Stiff (Terra Pernas Rígidas)',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Halters'],
+                  musclesFocus: 'Isquiotibiais + Glúteos — alongamento profundo',
+                  execution: [
+                    'Joelhos bloqueados sem flexão intencional',
+                    'Inclinação do tronco até sentir forte alongamento',
+                    'Não arredonde a lombar — mantenha neutro ou levemente arqueado',
+                    'Amplitude maior se feito em plataforma elevada',
+                  ],
+                  tip: 'Diferença do RDL: no Stiff o objetivo é o alongamento máximo. No RDL, é o padrão de extensão de quadril com carga.',
+                },
+              ],
+            },
+            {
+              name: 'Panturrilha',
+              icon: '👟',
+              color: '#9F7AEA',
+              exercises: [
+                {
+                  name: 'Panturrilha em Pé — Gêmeos',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral',
+                  equipment: ['Máquina', 'Degrau', 'Smith Machine'],
+                  musclesFocus: 'Gastrocnêmio — foco',
+                  execution: [
+                    'Joelhos estendidos para ativar o gastrocnêmio biarticular',
+                    'Desça até o limite de dorsiflexão sem bater',
+                    'Suba até a ponta do pé ao máximo — hold 1 segundo no topo',
+                    'Amplitude completa é fundamental — não "quique" na parte baixa',
+                  ],
+                  tip: 'Responde a alto volume (15–25 reps) com alta frequência (3–4×/semana). Panturrilha fraca é sempre resultado de volume insuficiente.',
+                },
+                {
+                  name: 'Panturrilha Sentada — Sóleo',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral',
+                  equipment: ['Máquina sentada'],
+                  musclesFocus: 'Sóleo — foco',
+                  execution: [
+                    'Joelhos a 90° — inativa o gastrocnêmio biarticular',
+                    'Mesma amplitude: desça ao limite e suba ao máximo',
+                    'O sóleo suporta carga maior — use peso progressivo',
+                  ],
+                  tip: 'O sóleo forma a base e profundidade da panturrilha. Treinar só gêmeos é deixar metade do potencial de desenvolvimento na mesa.',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    // ─────────────────── CAP 3: PROTOCOLO ──────────────────────────
+    {
+      id: 'protocolo',
+      number: 3,
+      title: 'Montagem do Protocolo',
+      icon: '📋',
+      intro: 'Como organizar o treino de pernas para máxima eficiência, respeitando a recuperação e priorizando o que mais precisa de desenvolvimento.',
+      sections: [
+        {
+          type: 'protocol-principles',
+          principles: [
+            {
+              icon: '🔄',
+              title: 'Frequência',
+              content: '1× por semana para iniciantes. 2× para intermediários e avançados: separe Treino A (quad-dominante) e Treino B (posterior-dominante). Alta frequência = mais volume total sem sobrecarregar uma única sessão.',
+            },
+            {
+              icon: '📐',
+              title: 'Ordem dos Exercícios',
+              content: 'Compostos pesados primeiro (agachamento, terra, leg press). Depois compostos auxiliares (hack squat, afundo). Por último isolamentos (extensora, flexora). Panturrilha no final. Nunca inverta essa lógica.',
+            },
+            {
+              icon: '📊',
+              title: 'Volume por Nível',
+              content: 'Iniciante: 8–12 séries semanais por subgrupo. Intermediário: 12–18 séries. Avançado: 16–24 séries. Monitore sinais de overreaching — queda de força, dor articular, fadiga acumulada.',
+            },
+            {
+              icon: '⚖️',
+              title: 'Equilíbrio Quad / Posterior',
+              content: 'Proporção ideal: 1:1 entre volume de quad e posterior. A maioria das pessoas treina muito quad e pouco isquiotibial — isso gera instabilidade de joelho. Respeite a proporção.',
+            },
+          ],
+        },
+        {
+          type: 'workout-examples',
+          workouts: [
+            {
+              name: 'Treino A — Quad Dominante',
+              tag: 'Intermediário',
+              duration: '60–70 min',
+              exercises: [
+                { name: 'Agachamento Livre', sets: '4', reps: '6–10', rest: '3 min', note: 'Foco em profundidade e técnica' },
+                { name: 'Leg Press 45°', sets: '3', reps: '10–15', rest: '2 min', note: 'Pés médios na plataforma' },
+                { name: 'Afundo Búlgaro', sets: '3', reps: '10–12 cada', rest: '2 min', note: 'Unilateral — controle total' },
+                { name: 'Cadeira Extensora', sets: '3', reps: '12–20', rest: '90s', note: 'Finalizador — pump e VMO' },
+                { name: 'Panturrilha em Pé', sets: '4', reps: '12–20', rest: '90s', note: 'Amplitude completa' },
+                { name: 'Panturrilha Sentada', sets: '3', reps: '15–20', rest: '60s', note: 'Foco no sóleo' },
+              ],
+            },
+            {
+              name: 'Treino B — Posterior Dominante',
+              tag: 'Intermediário',
+              duration: '55–65 min',
+              exercises: [
+                { name: 'Terra Romeno c/ Barra', sets: '4', reps: '8–12', rest: '3 min', note: 'Pausa no alongamento (1–2s)' },
+                { name: 'Hip Thrust', sets: '4', reps: '10–15', rest: '2 min', note: 'Squeeze intenso no topo' },
+                { name: 'Cadeira Flexora Sentada', sets: '3', reps: '10–15', rest: '90s', note: 'Controle excêntrico 3s' },
+                { name: 'Hack Squat', sets: '3', reps: '10–15', rest: '2 min', note: 'Manutenção do quad' },
+                { name: 'Abdução de Quadril', sets: '3', reps: '15–20', rest: '60s', note: 'Glúteo médio e mínimo' },
+                { name: 'Panturrilha em Pé', sets: '4', reps: '15–20', rest: '90s', note: 'Amplitude total' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    // ─────────────────── CAP 4: INTENSIDADE ────────────────────────
+    {
+      id: 'intensidade',
+      number: 4,
+      title: 'Técnicas de Intensidade',
+      icon: '⚡',
+      intro: 'Técnicas avançadas para quebrar platôs, maximizar o estímulo e sair da zona de conforto. Use com moderação — não em todos os exercícios, não em todo treino.',
+      sections: [
+        {
+          type: 'technique-cards',
+          techniques: [
+            {
+              name: 'Drop Set',
+              icon: '📉',
+              level: 'intermediate',
+              description: 'Após a falha concêntrica, reduza 20–30% da carga imediatamente e continue sem descanso. Repita 1–2 vezes.',
+              application: 'Extensora, leg press, flexora. Ideal no último exercício da sessão.',
+              warning: 'Não use no agachamento livre com fadiga acumulada — técnica compromete segurança.',
+            },
+            {
+              name: 'Rest-Pause',
+              icon: '⏸️',
+              level: 'advanced',
+              description: 'Chegue à falha, descanse 10–15 segundos com a carga no rack/máquina e retome. Repita 2–3 vezes.',
+              application: 'Extensora, leg press, panturrilha em pé.',
+              warning: 'Exige conhecimento real do seu limite. Prefira usar em máquinas — mais seguro sem parceiro.',
+            },
+            {
+              name: 'Pré-Exaustão',
+              icon: '🔥',
+              level: 'intermediate',
+              description: 'Execute um isolamento antes do composto para pré-fadigar o músculo-alvo e forçar maior recrutamento no composto.',
+              application: 'Extensora → Agachamento (quad). Flexora → RDL (isquio). Abdução → Hip Thrust (glúteo).',
+              warning: 'Reduz a carga no composto — não use antes das principais séries de força do mesociclo.',
+            },
+            {
+              name: 'Pausa no Alongamento',
+              icon: '🧘',
+              level: 'intermediate',
+              description: 'Pause 2–3 segundos no ponto de maior alongamento muscular. Aumenta dano miofibrilar e ativa mais unidades motoras.',
+              application: 'RDL na posição inferior, afundo búlgaro no fundo, panturrilha na posição baixa.',
+              warning: 'Contraindicado com carga máxima — aumente estímulo com cargas moderadas e mais controle.',
+            },
+            {
+              name: 'Séries Gigantes (Giant Set)',
+              icon: '🔁',
+              level: 'advanced',
+              description: '3–4 exercícios encadeados sem descanso. Enorme estímulo metabólico — ideal para corte ou choque de volume pontual.',
+              application: 'Ex: Extensora → Leg Press → Afundo → Panturrilha. Repetir 3 ciclos.',
+              warning: 'Aumenta muito o tempo de sessão. Reservar para fase de corte ou semana de choque.',
+            },
+            {
+              name: 'Séries Parciais',
+              icon: '🎯',
+              level: 'intermediate',
+              description: 'Após atingir a falha em amplitude total, continue com metade da amplitude para manter o músculo sob tensão.',
+              application: 'Cadeira extensora (metade superior), leg press (metade superior do movimento).',
+              warning: 'Não substitui amplitude total — use apenas como extensão da série após a falha real.',
+            },
+          ],
+        },
+      ],
+    },
+
+    // ─────────────────── CAP 5: PERIODIZAÇÃO ───────────────────────
+    {
+      id: 'periodizacao',
+      number: 5,
+      title: 'Periodização & Progressão',
+      icon: '📈',
+      intro: 'A diferença entre quem progride consistentemente e quem estagna é o planejamento sistemático. Pernas exigem recuperação — planeje com inteligência.',
+      sections: [
+        {
+          type: 'progression-blocks',
+          blocks: [
+            {
+              title: 'Progressão de Carga',
+              icon: '⬆️',
+              items: [
+                'Aumente peso quando conseguir o topo da faixa de reps com boa técnica em TODAS as séries',
+                'Incrementos pequenos: 2,5kg por sessão em compostos, 1–2kg em isolamentos',
+                'Se não houve progressão em 2 semanas com boa recuperação: revise técnica, volume e sono antes de insistir na carga',
+              ],
+            },
+            {
+              title: 'Deload',
+              icon: '⬇️',
+              items: [
+                'A cada 4–6 semanas de treino intenso: 1 semana com 50–60% do volume normal',
+                'Mantenha a frequência — apenas reduza o número de séries e a carga (~70% do habitual)',
+                'Sinais de que precisa de deload: força caindo, motivação baixa, dor articular persistente, sono ruim',
+              ],
+            },
+            {
+              title: 'Mesociclos',
+              icon: '🔄',
+              items: [
+                'Volume (acumulação) 4–6 semanas: alto volume, cargas moderadas (60–75% 1RM)',
+                'Intensidade (realização) 3–4 semanas: volume reduzido, cargas altas (80–90% 1RM)',
+                'A transição garante adaptação completa antes de elevar o estímulo novamente',
+              ],
+            },
+            {
+              title: 'Monitoramento',
+              icon: '📊',
+              items: [
+                'Registre por sessão: exercício, carga, reps por série e RIR (reps in reserve)',
+                'Meça circunferência de coxa e glúteo a cada 4 semanas, sempre no mesmo horário',
+                'Fotos de progresso: mesmo enquadramento, mesma iluminação, mesma hora do dia',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tips-grid',
+          tips: [
+            { icon: '😴', title: 'Sono & Recuperação', text: 'Pernas impactam mais o SNC que qualquer outro grupo. Priorize 7–9h de sono após treinos pesados de pernas — o crescimento acontece no repouso.' },
+            { icon: '🥩', title: 'Nutrição no Dia', text: 'Mínimo 2g de proteína/kg no dia de pernas. Carboidratos de rápida absorção pré-treino potencializam a performance em séries pesadas de agachamento.' },
+            { icon: '🧊', title: 'DOMS de Pernas', text: 'A dor muscular tardia de pernas pode durar 48–72h. Não retreine no pico da dor — aguarde regressão antes da próxima sessão de alta intensidade.' },
+            { icon: '🩺', title: 'Valgo de Joelho', text: 'Joelho colapsando para dentro no agachamento = sinal de glúteo médio fraco. Trabalhe fortalecimento específico antes de elevar carga para evitar lesão de LCA.' },
+          ],
+        },
+      ],
+    },
+  ],
+}
