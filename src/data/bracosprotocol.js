@@ -1,0 +1,412 @@
+export const BRACOS_PROTOCOL = {
+  id: 'bracos',
+  title: 'Protocolo Braços',
+  subtitle: 'Bíceps, tríceps e braquial — volume, forma e proporção completos',
+  icon: '💪',
+  color: '#ED8936',
+
+  chapters: [
+    {
+      id: 'anatomia',
+      number: 1,
+      title: 'Anatomia dos Braços',
+      icon: '🧬',
+      intro: 'Braços são compostos por três grupos principais: tríceps (⅔ do volume), bíceps e braquial. A maioria treina excessivamente o bíceps — mas são o tríceps e o braquial que criam os braços grandes.',
+      sections: [
+        {
+          type: 'muscle-cards',
+          muscles: [
+            {
+              name: 'Tríceps Braquial',
+              scientificName: 'Musculus Triceps Brachii',
+              icon: '🟠',
+              heads: ['Cabeça Longa (porção longa)', 'Cabeça Lateral (porção externa)', 'Cabeça Medial (porção interna)'],
+              function: 'Extensão do cotovelo. A cabeça longa também faz extensão do ombro (é biarticular). Representa aproximadamente ⅔ do volume total do braço.',
+              tip: 'A cabeça longa só é completamente ativada com o braço acima da cabeça (extensões por cima). Para tríceps completo, inclua obrigatoriamente exercises com braço elevado — não apenas pulley e paralelas.',
+              keyFact: '⅔ do volume do braço — quem foca só em bíceps nunca terá braços grandes',
+            },
+            {
+              name: 'Bíceps Braquial',
+              scientificName: 'Musculus Biceps Brachii',
+              icon: '🟡',
+              heads: ['Cabeça Longa (face externa — "pico")', 'Cabeça Curta (face interna — "largura")'],
+              function: 'Flexão do cotovelo, supinação do antebraço e assistência na flexão do ombro. Biarticular — também participa da flexão do ombro.',
+              tip: 'A cabeça longa cria o "pico" do bíceps. Para ativar mais a longa: pegada fechada e cotovelo levemente atrás do corpo (rosca inclinada). Para curta: pegada larga.',
+              keyFact: 'Altamente visível mas menor que o tríceps — a "estrela" visual dos braços',
+            },
+            {
+              name: 'Braquial',
+              scientificName: 'Musculus Brachialis',
+              icon: '🟤',
+              heads: ['Porção única — entre bíceps e tríceps'],
+              function: 'Flexão do cotovelo — o verdadeiro motor primário da flexão. Não supina o antebraço, ativo em todas as posições.',
+              tip: 'O braquial fica "embaixo" do bíceps e empurra ele para cima — desenvolver o braquial aumenta o pico aparente do bíceps. Ativado maximamente com pegada neutra (martelo) ou pronada.',
+              keyFact: 'Empurra o bíceps para cima criando pico — é o "fundo" do braço superior',
+            },
+            {
+              name: 'Braquiorradial',
+              scientificName: 'Musculus Brachioradialis',
+              icon: '🟢',
+              heads: ['Porção única — principal do antebraço'],
+              function: 'Flexão do cotovelo na posição neutra. Maior músculo do antebraço — visível na face lateral do antebraço.',
+              tip: 'Ativado maximamente na pegada neutra (rosca martelo) e pegada pronada (rosca inversa). Cria o volume lateral do antebraço — muito valorizado em palco em poses de braço.',
+              keyFact: 'Cria o volume lateral do antebraço — fundamental para braços proporcionais',
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'biceps',
+      number: 2,
+      title: 'Exercícios de Bíceps',
+      icon: '🦾',
+      intro: 'Bíceps respondem a amplitude completa, supinação no topo e variação de ângulo do cotovelo. Mais reps com amplitude parcial é pior do que menos reps com amplitude total e supinação.',
+      sections: [
+        {
+          type: 'exercise-categories',
+          categories: [
+            {
+              name: 'Roscas Compostas & Base',
+              icon: '🏋️',
+              color: '#ED8936',
+              exercises: [
+                {
+                  name: 'Rosca Direta com Barra',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra'],
+                  musclesFocus: 'Bíceps (ambas as cabeças) + Braquial',
+                  execution: [
+                    'Pegada pronada na largura dos ombros — barra EZ ou reta',
+                    'Cotovelos fixos ao lado do corpo — não os leve para frente',
+                    'Suba até contração completa — supine o antebraço no topo',
+                    'Desça com controle total — 2–3 segundos excêntrico',
+                    'Não balance o tronco — use apenas o cotovelo como pivô',
+                  ],
+                  tip: 'Barra EZ reduz stress no pulso. Barra reta maximiza supinação — maior ativação do bíceps. Use EZ em volume alto, reta em séries de força.',
+                },
+                {
+                  name: 'Rosca Alternada com Halter',
+                  difficulty: 'beginner',
+                  pattern: 'Unilateral',
+                  equipment: ['Halters'],
+                  musclesFocus: 'Bíceps + Braquial + Supinação',
+                  execution: [
+                    'Inicia com pegada neutra — supine ao longo da subida (rotacione a palma para cima)',
+                    'No topo: máxima supinação e contração do bíceps',
+                    'Um braço por vez — permite foco total em cada lado',
+                    'Não balancea o tronco para ajudar — apenas o cotovelo se move',
+                  ],
+                  tip: 'A supinação durante o movimento ativa a cabeça longa maximamente. É a rosca mais completa para estimular todo o bíceps.',
+                },
+                {
+                  name: 'Rosca Inclinada com Halter',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral/Unilateral',
+                  equipment: ['Halters', 'Banco inclinado'],
+                  musclesFocus: 'Cabeça Longa do Bíceps — ênfase no pico',
+                  execution: [
+                    'Banco inclinado a 45–60° — cotovelo atrás do corpo na posição inicial',
+                    'A posição de ombro estendido alonga maximamente a cabeça longa',
+                    'Suba com supinação — pause 1 segundo na contração máxima',
+                    'Retorne completamente — sinta o alongamento profundo',
+                  ],
+                  tip: 'Para máximo desenvolvimento do pico do bíceps. A cabeça longa só é completamente alongada com o ombro estendido.',
+                },
+              ],
+            },
+            {
+              name: 'Roscas de Isolamento & Variações',
+              icon: '🎯',
+              color: '#48BB78',
+              exercises: [
+                {
+                  name: 'Rosca Martelo',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral/Unilateral',
+                  equipment: ['Halters'],
+                  musclesFocus: 'Braquial + Braquiorradial + Bíceps',
+                  execution: [
+                    'Pegada neutra — palmas uma para a outra durante todo o movimento',
+                    'Sem supinação — movimento puro de flexão',
+                    'Ativa maximamente o braquial e o braquiorradial',
+                    'Pode ser feita alternada ou simultânea, em pé ou sentado',
+                  ],
+                  tip: 'A rosca que mais desenvolve o antebraço lateral e o braquial — criando o pico visual do bíceps. Inclua em TODO treino de bíceps.',
+                },
+                {
+                  name: 'Rosca Concentrada',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento Unilateral',
+                  equipment: ['Halter'],
+                  musclesFocus: 'Cabeça Longa — pico máximo',
+                  execution: [
+                    'Sentado, cotovelo apoiado na face interna da coxa',
+                    'Movimento puro — zero momentum',
+                    'Supine completamente no topo — palma para o ombro',
+                    'Desça até extensão quase completa',
+                  ],
+                  tip: 'Isolamento mais puro do bíceps. Ideal como finalizador para pump e conexão mente-músculo.',
+                },
+                {
+                  name: 'Rosca no Cabo (Polia Baixa)',
+                  difficulty: 'beginner',
+                  pattern: 'Unilateral',
+                  equipment: ['Cabo'],
+                  musclesFocus: 'Bíceps com tensão constante',
+                  execution: [
+                    'Polia baixa — mantenha cotovelo fixo ao lado do corpo',
+                    'Tensão constante em toda a amplitude — superior ao halter no alongamento',
+                    'Pode usar corda (para supinação) ou barra reta',
+                    'Excelente para pump ao final do treino',
+                  ],
+                  tip: 'O cabo mantém tensão na posição baixa onde o halter "perde" tensão pela gravidade. Use no final como finalizador.',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'triceps',
+      number: 3,
+      title: 'Exercícios de Tríceps',
+      icon: '🔱',
+      intro: 'Tríceps precisa de exercícios COM o braço elevado (para a cabeça longa) E exercícios com braço ao lado do corpo (para as cabeças lateral e medial). Apenas pulley não constrói tríceps completo.',
+      sections: [
+        {
+          type: 'exercise-categories',
+          categories: [
+            {
+              name: 'Exercícios com Braço Elevado — Cabeça Longa',
+              icon: '⬆️',
+              color: '#E53E3E',
+              exercises: [
+                {
+                  name: 'Tríceps Testa com Barra EZ',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra EZ', 'Banco'],
+                  musclesFocus: 'Cabeça Longa + Cabeça Medial do Tríceps',
+                  execution: [
+                    'Deitado, barra EZ acima do peito',
+                    'Desça a barra em direção à testa — cotovelos fixos e apontando para cima',
+                    'O cotovelo NÃO se move — apenas o antebraço dobra',
+                    'Extensão completa no topo — sem travar o cotovelo',
+                    'Controle rigoroso — carga cai diretamente na cabeça em caso de falha',
+                  ],
+                  tip: 'Maior sobrecarga para a cabeça longa. Mais eficaz para construir massa de tríceps que o pulley. Use com parceiro nos sets pesados.',
+                },
+                {
+                  name: 'Extensão por Cima com Halter',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral',
+                  equipment: ['Halter'],
+                  musclesFocus: 'Cabeça Longa — máximo alongamento',
+                  execution: [
+                    'Sentado ou em pé — halter acima da cabeça com as duas mãos',
+                    'Desça o halter atrás da cabeça até cotovelos a 90°',
+                    'Cotovelos fixos — apontando para frente, não abrindo para os lados',
+                    'Suba até extensão completa com squeeze',
+                  ],
+                  tip: 'A posição de braço elevado é a única que alonga completamente a cabeça longa. Imprescindível para tríceps volumoso.',
+                },
+                {
+                  name: 'Extensão por Cima no Cabo',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral',
+                  equipment: ['Polia alta', 'Corda'],
+                  musclesFocus: 'Cabeça Longa com tensão constante',
+                  execution: [
+                    'Polia alta — de frente ou de costas para ela',
+                    'Puxe a corda para baixo e para fora no ponto final',
+                    'De costas para a polia: coluna reta, cotovelos fixos à frente',
+                    'Tensão constante em todo o arco de movimento',
+                  ],
+                  tip: 'A versão com cabo mantém tensão no ponto de maior alongamento — superior ao halter neste aspecto. Varie entre os dois.',
+                },
+              ],
+            },
+            {
+              name: 'Exercícios com Braço ao Lado — Cabeças Lateral & Medial',
+              icon: '↔️',
+              color: '#9F7AEA',
+              exercises: [
+                {
+                  name: 'Tríceps Pulley (Polia Alta)',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral',
+                  equipment: ['Polia alta', 'Barra ou corda'],
+                  musclesFocus: 'Cabeça Lateral + Medial do Tríceps',
+                  execution: [
+                    'Levemente inclinado para frente — cotovelos fixos ao lado do corpo',
+                    'Empurre para baixo até extensão completa',
+                    'Com corda: afaste as pontas no final para máxima contração',
+                    'Retorne até cotovelos a 90° — amplitude completa',
+                  ],
+                  tip: 'O exercício mais popular para tríceps. Ótimo mas INSUFICIENTE como único exercício — não ativa a cabeça longa adequadamente.',
+                },
+                {
+                  name: 'Mergulho nas Paralelas (Tríceps)',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barras paralelas'],
+                  musclesFocus: 'Tríceps Completo + Deltóide + Peito',
+                  execution: [
+                    'Tronco VERTICAL — não incline para frente (isso transfere para peito)',
+                    'Cotovelos colados ao corpo — não abertos',
+                    'Desça até cotovelos a 90° — não mais profundo',
+                    'Empurre até extensão quase completa',
+                  ],
+                  tip: 'Com tronco vertical = mais tríceps. Inclinado = mais peito. Adicione peso quando atingir 12+ reps.',
+                },
+                {
+                  name: 'Kickback com Halter',
+                  difficulty: 'beginner',
+                  pattern: 'Unilateral',
+                  equipment: ['Halter'],
+                  musclesFocus: 'Cabeça Lateral — isolamento',
+                  execution: [
+                    'Tronco paralelo ao chão, cotovelo fixo ao lado do tronco',
+                    'Empurre o halter para trás até extensão completa',
+                    'Pause 1–2 segundos no topo — squeeze intenso',
+                    'Use peso leve — o objetivo é a contração, não a carga',
+                  ],
+                  tip: 'Excelente para pump e conexão mente-músculo. Não sobrecarregue — o isolamento lateral do tríceps responde a contrações, não a carga.',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'protocolo',
+      number: 4,
+      title: 'Montagem do Protocolo',
+      icon: '📋',
+      intro: 'Braços são músculos relativamente pequenos que se recuperam rapidamente. Alta frequência e volume moderado por sessão superam uma única sessão devastadora por semana.',
+      sections: [
+        {
+          type: 'protocol-principles',
+          principles: [
+            {
+              icon: '🔄',
+              title: 'Frequência',
+              content: '2–3× por semana para braços. Eles já são ativados indiretamente em peito (tríceps) e costas (bíceps) — adicione 1–2 sessões diretas por semana. Alta frequência é a maior vantagem para braços.',
+            },
+            {
+              icon: '📊',
+              title: 'Volume Semanal',
+              content: 'Bíceps: 10–20 séries semanais. Tríceps: 10–20 séries (lembre que já treinado em peito/ombro). Braquial: inclua 2–3 séries de rosca martelo por sessão — não precisa de volume separado.',
+            },
+            {
+              icon: '⚖️',
+              title: 'Proporção Bíceps/Tríceps',
+              content: 'Tríceps precisa de volume ligeiramente maior que o bíceps — especialmente nos exercícios com braço elevado (cabeça longa). Para cada série de bíceps, faça 1,2–1,5 séries de tríceps.',
+            },
+            {
+              icon: '🎯',
+              title: 'Superset Bíceps/Tríceps',
+              content: 'Encadear bíceps e tríceps em superset é eficiente em tempo e pode aumentar pump por efeito de antagônico. Ex: Rosca Direta → Tríceps Pulley. Excelente para sessões curtas.',
+            },
+          ],
+        },
+        {
+          type: 'workout-examples',
+          workouts: [
+            {
+              name: 'Treino de Braços Completo',
+              tag: 'Intermediário',
+              duration: '50–60 min',
+              exercises: [
+                { name: 'Tríceps Testa c/ Barra EZ', sets: '4', reps: '8–12', rest: '2 min', note: 'Cabeça longa — base' },
+                { name: 'Rosca Direta c/ Barra EZ', sets: '4', reps: '8–12', rest: '2 min', note: 'Bíceps — base' },
+                { name: 'Extensão por Cima Halter', sets: '3', reps: '10–14', rest: '90s', note: 'Cabeça longa alongada' },
+                { name: 'Rosca Inclinada Halter', sets: '3', reps: '10–14', rest: '90s', note: 'Cabeça longa — pico' },
+                { name: 'Tríceps Pulley Corda', sets: '3', reps: '12–16', rest: '60s', note: 'Cabeça lateral — pump' },
+                { name: 'Rosca Martelo Alternada', sets: '3', reps: '12–16', rest: '60s', note: 'Braquial + antebraço' },
+              ],
+            },
+            {
+              name: 'Superset Bíceps + Tríceps',
+              tag: 'Intermediário (eficiência)',
+              duration: '40–50 min',
+              exercises: [
+                { name: 'Rosca Direta + Tríceps Testa', sets: '4', reps: '10–12 cada', rest: '90s entre supersets', note: 'Superset A' },
+                { name: 'Rosca Inclinada + Ext. por Cima', sets: '3', reps: '10–14 cada', rest: '90s', note: 'Superset B' },
+                { name: 'Rosca Martelo + Pulley Corda', sets: '3', reps: '12–16 cada', rest: '60s', note: 'Superset C — pump' },
+                { name: 'Rosca Concentrada + Kickback', sets: '2', reps: '15–20 cada', rest: '60s', note: 'Finalizador' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'periodizacao',
+      number: 5,
+      title: 'Periodização & Progressão',
+      icon: '📈',
+      intro: 'Braços crescem através de progressão consistente nos compostos e aumento inteligente de volume nos isolamentos. Paciência e consistência são os maiores determinantes.',
+      sections: [
+        {
+          type: 'progression-blocks',
+          blocks: [
+            {
+              title: 'Progressão nos Compostos',
+              icon: '⬆️',
+              items: [
+                'Rosca direta e tríceps testa: principais exercícios para progressão de carga',
+                'Mergulho nas paralelas: adicione peso quando atingir 12 reps com boa forma',
+                'Barra fixa supinada (chin-up): o composto de bíceps mais subestimado',
+              ],
+            },
+            {
+              title: 'Volume nos Isolamentos',
+              icon: '📊',
+              items: [
+                'Elevações e roscas de cabo: aumente volume progressivamente (+1 série por semana)',
+                'Monitore o pump — bom pump indica volume adequado para tamanho e saúde do músculo',
+                'Mais de 4–5 exercícios por grupo em uma sessão raramente traz benefício extra',
+              ],
+            },
+            {
+              title: 'Indicadores de Progresso',
+              icon: '📏',
+              items: [
+                'Circunferência do braço: meça sempre no mesmo ponto, mesma hora do dia, braço relaxado e contraído',
+                'Foto de postura: bíceps duplo frontal a cada 4 semanas com mesmo enquadramento',
+                'Força nos compostos: rosca direta e tríceps testa são os marcadores primários',
+              ],
+            },
+            {
+              title: 'Deload',
+              icon: '⬇️',
+              items: [
+                'A cada 4–6 semanas: reduza volume para 50%, mantenha frequência',
+                'Braços raramente precisam de deload extenso — recuperam rápido',
+                'Se sentir tendinite no cotovelo: reduza rosca direta com barra e priorize cabos e EZ',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tips-grid',
+          tips: [
+            { icon: '🔄', title: 'Supinação Completa', text: 'A maioria das pessoas faz rosca sem supinar o antebraço. A supinação no topo é o que diferencia bíceps trabalhado de braquial trabalhado. Gire a palma para cima e para fora — e sinta a diferença.' },
+            { icon: '📐', title: 'Amplitude Total', text: 'Não corte a amplitude. Desça completamente (extensão quase total) e suba até contração máxima. 8 reps com amplitude total > 15 reps com amplitude parcial.' },
+            { icon: '⏱️', title: 'Excêntrico Lento', text: 'O crescimento muscular ocorre principalmente na fase excêntrica (descida). Desça em 3–4 segundos nas roscas e extensões — isso dobra o estímulo sem adicionar uma repetição sequer.' },
+            { icon: '💪', title: 'Cabeça Longa do Tríceps', text: 'Se seus braços estão estagnados, provavelmente é porque você não treina a cabeça longa do tríceps. Inclua OBRIGATORIAMENTE extensão por cima da cabeça em toda sessão de tríceps.' },
+          ],
+        },
+      ],
+    },
+  ],
+}

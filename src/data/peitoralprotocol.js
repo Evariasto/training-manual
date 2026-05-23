@@ -1,0 +1,428 @@
+export const PEITORAL_PROTOCOL = {
+  id: 'peitoral',
+  title: 'Protocolo Peito',
+  subtitle: 'Anatomia, exercícios, ângulos e periodização para peitoral completo',
+  icon: '🫁',
+  color: '#E53E3E',
+
+  chapters: [
+    {
+      id: 'anatomia',
+      number: 1,
+      title: 'Anatomia do Peitoral',
+      icon: '🧬',
+      intro: 'O peitoral é composto por duas estruturas principais — maior e menor — com inserções distintas que determinam quais ângulos e exercícios ativam cada porção. Treinar apenas no plano horizontal é deixar metade do músculo sem estímulo.',
+      sections: [
+        {
+          type: 'muscle-cards',
+          muscles: [
+            {
+              name: 'Peitoral Maior — Porção Clavicular',
+              scientificName: 'Pectoralis Major (Caput Claviculare)',
+              icon: '🔴',
+              heads: ['Fibras superiores — inserção na clavícula'],
+              function: 'Flexão e adução horizontal do úmero com componente de rotação medial. Ativado maximamente em ângulos inclinados (30–45°).',
+              tip: 'Cria o enchimento superior do peitoral — fundamental para o visual em poses frontais. Supino inclinado a 30° é o ângulo ótimo — acima de 45° transfere demais para o deltóide anterior.',
+              keyFact: 'Porção mais difícil de desenvolver — exige ângulo inclinado específico (30–45°)',
+            },
+            {
+              name: 'Peitoral Maior — Porção Esternal',
+              scientificName: 'Pectoralis Major (Caput Sternale)',
+              icon: '🔴',
+              heads: ['Fibras médias — inserção no esterno', 'Fibras inferiores — inserção costal'],
+              function: 'Adução horizontal, extensão e rotação medial do úmero. Porção mais volumosa — ativada no plano plano e declinado.',
+              tip: 'A "armadura" central do peito. Supino plano e crucifixo plano ativam diretamente. O declinado ativa as fibras inferiores e cria a separação inferior do peitoral.',
+              keyFact: 'Maior porção do peitoral — define o volume e a espessura central',
+            },
+            {
+              name: 'Peitoral Menor',
+              scientificName: 'Pectoralis Minor',
+              icon: '🟠',
+              heads: ['Inserção na coracoide da escápula'],
+              function: 'Depressão e protração da escápula. Músculo profundo — não visível diretamente, mas influencia a posição do ombro e a postura.',
+              tip: 'Peitoral menor encurtado (comum em quem treina muito peito) causa ombros anterorizados. Alongue após cada treino de peito e inclua retração escapular nas remadas.',
+              keyFact: 'Profundo e invisível — seu desequilíbrio causa lesões de ombro e postura curvada',
+            },
+            {
+              name: 'Serrátil Anterior',
+              scientificName: 'Musculus Serratus Anterior',
+              icon: '🟡',
+              heads: ['Inserções nas costelas 1–8'],
+              function: 'Protração e rotação da escápula. Cria o "dentado" visível nas laterais do tronco em atletas com baixo percentual de gordura.',
+              tip: 'Ativado no pullover com halter e no supino com amplitude máxima (arms out). O serratil define a separação lateral entre peito e lat — muito valorizado em palco.',
+              keyFact: 'O "dentado" do atleta — define o shape lateral do tronco entre peito e costas',
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'exercicios',
+      number: 2,
+      title: 'Arsenal de Exercícios',
+      icon: '🏋️',
+      intro: 'Peitoral exige variação de ângulos (inclinado, plano, declinado), variação de implementos (barra, halter, cabo) e variação de amplitude. Cada combinação produz um estímulo diferente.',
+      sections: [
+        {
+          type: 'exercise-categories',
+          categories: [
+            {
+              name: 'Supinos — Força & Volume',
+              icon: '🏋️',
+              color: '#E53E3E',
+              exercises: [
+                {
+                  name: 'Supino Inclinado com Barra (30–45°)',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Banco inclinado'],
+                  musclesFocus: 'Peitoral Clavicular + Deltóide Anterior',
+                  execution: [
+                    'Banco a 30° (preferência) — acima de 45° ativa mais deltóide do que peitoral',
+                    'Pegada ligeiramente mais larga que ombros, cotovelo a 75°',
+                    'Desça a barra até a linha da clavícula — não o esterno',
+                    'Empurre concentrando a contração no peito superior — não nos ombros',
+                    'Pausa leve no toque — sem bater no peito',
+                  ],
+                  tip: '30° é o ângulo ótimo para clavicular. A 45° já divide o estímulo com o deltóide anterior.',
+                },
+                {
+                  name: 'Supino Plano com Barra',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Banco'],
+                  musclesFocus: 'Peitoral Esternal + Deltóide + Tríceps',
+                  execution: [
+                    'Pegada pronada: 1,5× largura dos ombros',
+                    'Pés no chão, lombar com leve arqueamento natural',
+                    'Desça a barra até o esterno — cotovelos a ~75° do tronco',
+                    'Empurre imaginando que está "juntando" as mãos no topo',
+                    'Extensão completa sem travar os cotovelos',
+                  ],
+                  tip: 'O maior potencial de sobrecarga progressiva para o peito. A base de qualquer programa de hipertrofia peitoral.',
+                },
+                {
+                  name: 'Supino Declinado com Barra',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barra', 'Banco declinado'],
+                  musclesFocus: 'Peitoral Esternal Inferior + Redondo Maior',
+                  execution: [
+                    'Banco declinado de 15–30°',
+                    'Barra desce até a parte inferior do esterno',
+                    'Cotovelos mais fechados que no supino plano',
+                    'Define a separação inferior do peitoral — "debaixo do peito"',
+                  ],
+                  tip: 'Cria a definição da linha inferior do peitoral — muito valorizada em fisiculturismo. Não precisa de muito ângulo: 15–20° já são suficientes.',
+                },
+                {
+                  name: 'Supino com Halter (Plano)',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral',
+                  equipment: ['Halters', 'Banco'],
+                  musclesFocus: 'Peitoral + Estabilizadores + Amplitude Maior',
+                  execution: [
+                    'Halters permitem amplitude maior — desça além da linha do peitoral',
+                    'Cotovelos levemente flexionados — nunca rígidos',
+                    'Palmas voltadas uma para a outra ou levemente rotadas',
+                    'Descida mais lenta — permite sentir o alongamento',
+                  ],
+                  tip: 'Maior amplitude que a barra — mais dano miofibrilar e estímulo de alongamento. Alterne entre barra e halter nos mesociclos.',
+                },
+              ],
+            },
+            {
+              name: 'Crucifixos & Cabos — Isolamento',
+              icon: '🦋',
+              color: '#ED8936',
+              exercises: [
+                {
+                  name: 'Crucifixo Inclinado com Halter',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Halters', 'Banco inclinado'],
+                  musclesFocus: 'Peitoral Clavicular — isolamento',
+                  execution: [
+                    'Banco a 30–45°',
+                    'Braços levemente flexionados — cotovelo suave durante todo o movimento',
+                    'Abra lateralmente até sentir forte alongamento no peitoral superior',
+                    'Feche imaginando abraçar um barril — não empurre',
+                    'Pausa de 1s no topo com contração máxima',
+                  ],
+                  tip: 'É um exercício de ADUÇÃO — não de empurrar. Se sentir ombro, reduza a amplitude de abertura.',
+                },
+                {
+                  name: 'Crossover Alto (Cabo)',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Cabos', 'Polia alta'],
+                  musclesFocus: 'Peitoral Esternal Inferior — cruzamento',
+                  execution: [
+                    'Polias acima dos ombros — puxe de cima para baixo e para dentro',
+                    'Ligeiramente inclinado para frente — peito para fora',
+                    'Cotovelos fixos na mesma flexão durante todo o movimento',
+                    'Cruzar as mãos no final maximiza a contração — alterne qual mão fica na frente',
+                    'Controle total no retorno — não deixe o cabo puxar',
+                  ],
+                  tip: 'A tensão constante do cabo em todo o arco é superior ao crucifixo com halter — especialmente no alongamento.',
+                },
+                {
+                  name: 'Crossover Neutro / Baixo (Cabo)',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Cabos', 'Polia baixa/média'],
+                  musclesFocus: 'Peitoral Clavicular — cruzamento',
+                  execution: [
+                    'Polias na altura do quadril — puxe de baixo para cima e para dentro',
+                    'Corpo ereto ou levemente inclinado para trás',
+                    'Finaliza com mãos acima do esterno',
+                    'Foco no peito superior durante o cruzamento',
+                  ],
+                  tip: 'Angulação inversa do crossover alto — ativa mais a porção clavicular. Ideal como finalizador após supinos inclinados.',
+                },
+                {
+                  name: 'Peck Deck (Voador)',
+                  difficulty: 'beginner',
+                  pattern: 'Isolamento',
+                  equipment: ['Máquina'],
+                  musclesFocus: 'Peitoral — isolamento com tensão contínua',
+                  execution: [
+                    'Cotovelos alinhados com os ombros ou levemente abaixo',
+                    'Não abra além do alinhamento dos ombros — protege o manguito',
+                    'Feche espremendo o peito — 2 segundos de contração',
+                    'Retorne com controle — não bata nas placas de peso',
+                  ],
+                  tip: 'Excelente para pump e conexão mente-músculo. Use ao final do treino para estimular máximo fluxo sanguíneo.',
+                },
+              ],
+            },
+            {
+              name: 'Mergulho & Complementares',
+              icon: '⬇️',
+              color: '#9F7AEA',
+              exercises: [
+                {
+                  name: 'Mergulho (Dip) — Peito',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Barras paralelas'],
+                  musclesFocus: 'Peitoral Inferior + Tríceps + Deltóide',
+                  execution: [
+                    'Incline o tronco para frente (~30°) para ativar peito ao invés de tríceps',
+                    'Cotovelos para os lados, não colados ao corpo',
+                    'Desça até cotovelos a 90° ou mais profundo se não houver dor no ombro',
+                    'Empurre imaginando juntar as barras ao subir',
+                  ],
+                  tip: 'Com tronco vertical = mais tríceps. Inclinado para frente = mais peito inferior. Adicione peso quando conseguir 12+ reps.',
+                },
+                {
+                  name: 'Pullover com Halter',
+                  difficulty: 'beginner',
+                  pattern: 'Composto',
+                  equipment: ['Halter', 'Banco'],
+                  musclesFocus: 'Peitoral + Serrátil + Latíssimo',
+                  execution: [
+                    'Perpendicular ao banco — só ombros e cabeça apoiados',
+                    'Halter com as duas mãos acima do peito, cotovelos levemente flexionados',
+                    'Desça o halter atrás da cabeça até sentir forte alongamento torácico',
+                    'Retorne em arco — pense em "expandir o tórax"',
+                  ],
+                  tip: 'Além de peitoral e lat, ativa o serrátil anterior — cria o dentado lateral do tronco. Excelente para expansão torácica.',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'protocolo',
+      number: 3,
+      title: 'Montagem do Protocolo',
+      icon: '📋',
+      intro: 'A chave para peitoral completo é variar o ângulo sistematicamente: inclinado (superior), plano (médio) e declinado (inferior). A maioria dos praticantes treina excessivamente o plano e neglencia o superior.',
+      sections: [
+        {
+          type: 'protocol-principles',
+          principles: [
+            {
+              icon: '📐',
+              title: 'Distribuição de Ângulos',
+              content: 'Para desenvolvimento equilibrado: 40% inclinado + 35% plano + 25% declinado/paralelas. A maioria inverte essa proporção — e é por isso que o peito superior sempre parece "vazio".',
+            },
+            {
+              icon: '🔄',
+              title: 'Frequência',
+              content: '2× por semana é o ideal para intermediários. Use Treino A com foco em inclinado (superior) e Treino B com foco em plano/declinado. Iniciantes: 1× com os três ângulos na mesma sessão.',
+            },
+            {
+              icon: '📊',
+              title: 'Volume Semanal',
+              content: 'Iniciante: 10–14 séries. Intermediário: 14–20 séries. Avançado: 18–24 séries. Respeite a recuperação — peito é trabalhado indiretamente em todos os empurrões de ombro e nas paralelas.',
+            },
+            {
+              icon: '⚖️',
+              title: 'Barra vs Halter vs Cabo',
+              content: 'Barra: maior sobrecarga e progressão. Halter: maior amplitude e estabilização. Cabo: tensão constante em todo o arco. Use os três sistematicamente — cada um cria estímulo diferente.',
+            },
+          ],
+        },
+        {
+          type: 'workout-examples',
+          workouts: [
+            {
+              name: 'Treino A — Foco Superior',
+              tag: 'Intermediário',
+              duration: '55–65 min',
+              exercises: [
+                { name: 'Supino Inclinado Barra 30°', sets: '4', reps: '6–10', rest: '3 min', note: 'Principal — peito superior' },
+                { name: 'Supino Inclinado Halter', sets: '3', reps: '10–14', rest: '2 min', note: 'Amplitude máxima' },
+                { name: 'Crossover Baixo (Cabo)', sets: '3', reps: '12–16', rest: '90s', note: 'Cruzamento para superior' },
+                { name: 'Mergulho com Peso', sets: '3', reps: '8–12', rest: '2 min', note: 'Inferior + volume extra' },
+                { name: 'Peck Deck', sets: '3', reps: '12–20', rest: '60s', note: 'Pump e conexão final' },
+              ],
+            },
+            {
+              name: 'Treino B — Foco Plano/Inferior',
+              tag: 'Intermediário',
+              duration: '55–65 min',
+              exercises: [
+                { name: 'Supino Plano Barra', sets: '4', reps: '6–10', rest: '3 min', note: 'Principal — carga máxima' },
+                { name: 'Supino Plano Halter', sets: '3', reps: '10–14', rest: '2 min', note: 'Amplitude ampliada' },
+                { name: 'Supino Declinado', sets: '3', reps: '10–14', rest: '2 min', note: 'Separação inferior' },
+                { name: 'Crossover Alto (Cabo)', sets: '3', reps: '12–16', rest: '90s', note: 'Cruzamento inferior' },
+                { name: 'Crucifixo Inclinado Halter', sets: '3', reps: '12–16', rest: '60s', note: 'Isolamento clavicular' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'intensidade',
+      number: 4,
+      title: 'Técnicas de Intensidade',
+      icon: '⚡',
+      intro: 'Peito responde muito bem a técnicas de pump e de extensão da série. A conexão mente-músculo é o limitante real — não a carga.',
+      sections: [
+        {
+          type: 'technique-cards',
+          techniques: [
+            {
+              name: 'Pré-Exaustão Invertida',
+              icon: '🔥',
+              level: 'intermediate',
+              description: 'Execute um isolamento (crucifixo/peck deck) ANTES do composto (supino). O peito chega pré-fatigado ao supino e recruta mais fibras próprias, reduzindo a compensação por tríceps e deltóide.',
+              application: 'Crucifixo 3×12 → Supino Inclinado 4×8. Peck Deck 2×15 → Supino Plano 3×10.',
+              warning: 'Reduz significativamente a carga no supino. Não use nessa sequência em semanas de foco em força.',
+            },
+            {
+              name: 'Pausa no Alongamento',
+              icon: '🧘',
+              level: 'intermediate',
+              description: 'Pause 2–3 segundos no ponto de maior alongamento (barra no peito ou halters na posição baixa). Aumenta dano miofibrilar e recruta fibras adicionais na fase concêntrica.',
+              application: 'Supino com halter, crucifixo, crossover no cabo.',
+              warning: 'Use com cargas moderadas (70% do máximo) — nunca em séries de 1–3RM.',
+            },
+            {
+              name: 'Squeeze Isométrico',
+              icon: '🔒',
+              level: 'beginner',
+              description: 'No ponto de contração máxima (topo do crossover ou peck deck), pause 2–3 segundos espremendo o peito ao máximo antes de retornar.',
+              application: 'Peck deck, crossover, crucifixo com halter.',
+              warning: 'Requer redução de carga de 20–30%. O objetivo é a contração, não o peso.',
+            },
+            {
+              name: 'Drop Set no Cabo',
+              icon: '📉',
+              level: 'intermediate',
+              description: 'No crossover ou peck deck, após a falha reduza 25% da carga imediatamente e continue. O cabo mantém tensão constante mesmo com carga menor — ideal para pump máximo.',
+              application: 'Crossover alto ou baixo. Peck deck. Último exercício da sessão.',
+              warning: 'Máximo 1 drop set por sessão. Mais do que isso aumenta risco de tendinite no ombro.',
+            },
+            {
+              name: 'Rest-Pause no Supino',
+              icon: '⏸️',
+              level: 'advanced',
+              description: 'No supino com halter ou máquina, chegue à falha, descanse 10–15s e retome. Repita 2–3 vezes. Alta intensidade sem comprometer a técnica no composto.',
+              application: 'Supino com halter (mais seguro que barra sem parceiro). Supino na máquina.',
+              warning: 'Não faça rest-pause no supino com barra sem parceiro de treino.',
+            },
+            {
+              name: 'Giant Set Peito',
+              icon: '🔁',
+              level: 'advanced',
+              description: 'Encadeie 3 exercícios de ângulos diferentes sem descanso. Ex: Inclinado → Plano → Crossover. Estímulo metabólico intenso com cobertura total dos 3 ângulos.',
+              application: 'Supino Inclinado Halter → Supino Plano Halter → Crossover Cabo. 3 ciclos.',
+              warning: 'Reserve para fase de corte ou choque de volume pontual. Não use com pesos máximos.',
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      id: 'periodizacao',
+      number: 5,
+      title: 'Periodização & Progressão',
+      icon: '📈',
+      intro: 'Peito responde bem à progressão de carga nos compostos e ao aumento de volume nos isolamentos. A simetria entre superior, médio e inferior é o objetivo estético final.',
+      sections: [
+        {
+          type: 'progression-blocks',
+          blocks: [
+            {
+              title: 'Progressão nos Supinos',
+              icon: '⬆️',
+              items: [
+                'Progressão dupla: aumente reps até o máximo da faixa, depois aumente carga e volte ao mínimo',
+                'Alterne entre barra e halter a cada mesociclo — cada um produz adaptações diferentes',
+                'Se o supino plano estagna, priorizeo inclinado por 4–6 semanas — o plano frequentemente "segue" junto',
+              ],
+            },
+            {
+              title: 'Equilíbrio Estético',
+              icon: '⚖️',
+              items: [
+                'Avalie de frente com boa iluminação: peito superior "vazio" = mais inclinado urgente',
+                'Separação central fraca = mais crossover e peck deck com squeeze',
+                'Linha inferior sem definição = mais declinado e mergulho inclinado',
+                'Serrátil visível = inclua pullover e mantenha % de gordura corporal baixo',
+              ],
+            },
+            {
+              title: 'Deload',
+              icon: '⬇️',
+              items: [
+                'A cada 4–6 semanas: 1 semana com 50% do volume e 70% da carga',
+                'Manutenha os ângulos — apenas reduza séries e intensidade',
+                'Ombros doloridos são sinal frequente de volume excessivo de peito — deload obrigatório',
+              ],
+            },
+            {
+              title: 'Saúde do Ombro',
+              icon: '🩺',
+              items: [
+                'Para cada série de empurrar (supino), faça 1 série de face pull ou remada alta',
+                'Nunca negligencie o trapézio posterior e o manguito rotador',
+                'Cotovelo aberto no supino (>90°) sobrecarrega o manguito — mantenha a 70–75°',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tips-grid',
+          tips: [
+            { icon: '🧠', title: 'Conexão Mente-Músculo', text: 'Imagine espremer uma laranja entre os peitoral no ponto de contração. Se você só "empurra" o peso, o tríceps e o deltóide roubam o estímulo do peito.' },
+            { icon: '📏', title: 'Escápulas Retraídas', text: 'Sempre retraia e deprima as escápulas antes de qualquer supino. Peito "saindo" do banco = mais amplitude e ativação peitoral, menos stress no ombro.' },
+            { icon: '🔁', title: 'Variedade de Ângulos', text: 'Peitoral tem ativação variável por ângulo de inserção. Treinar apenas um ângulo por 6+ meses cria assimetrias visíveis — varie a cada mesociclo.' },
+            { icon: '🩺', title: 'Dor no Ombro', text: 'Dor na face anterior do ombro durante supinos = possível impingimento ou bursita. Reduza carga, varie pegada (mais fechada) e inclua rotações externas de aquecimento.' },
+          ],
+        },
+      ],
+    },
+  ],
+}
