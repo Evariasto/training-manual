@@ -1,0 +1,115 @@
+/* ─── Layout ─────────────────────────────────────────────── */
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+.app-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px 0 12px;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.logo-icon { font-size: 22px; line-height: 1; }
+.logo-text {
+  font-size: 16px;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.3px;
+}
+
+.header-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--gradient-subtle);
+  border: 1px solid rgba(229,62,62,0.25);
+  color: var(--red);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── Hamburger ───────────────────────────────────────────── */
+.ham-btn {
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.ham-btn:hover { background: var(--surface2); }
+
+.ham-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+}
+.ham-icon span {
+  display: block;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+  transform-origin: center;
+}
+.ham-icon.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham-icon.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham-icon.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Body / Sidebar / Main ────────────────────────────────── */
+.app-body {
+  display: flex;
+  margin-top: 56px;
+  min-height: calc(100vh - 56px);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 90;
+  top: 56px;
+}
+
+.app-main {
+  flex: 1;
+  padding: 24px 20px 40px;
+  min-width: 0;
+}
+
+/* Desktop sidebar always visible */
+@media (min-width: 768px) {
+  .app-main { margin-left: 240px; }
+  .ham-btn { display: none; }
+  .sidebar-overlay { display: none !important; }
+}

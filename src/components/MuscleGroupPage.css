@@ -1,0 +1,244 @@
+/* ─── Page wrapper ────────────────────────────────────────── */
+.mgp {
+  max-width: 900px;
+}
+
+/* ─── Hero ────────────────────────────────────────────────── */
+.mgp-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mgp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(229,62,62,0.06), transparent 60%);
+  pointer-events: none;
+}
+
+.mgp-hero-icon {
+  font-size: 40px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mgp-hero-info { flex: 1; min-width: 0; }
+
+.mgp-hero-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 4px;
+  letter-spacing: -0.5px;
+}
+
+.mgp-hero-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.mgp-hero-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gc, var(--red));
+  background: rgba(229,62,62,0.1);
+  border: 1px solid rgba(229,62,62,0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Tabs ────────────────────────────────────────────────── */
+.mgp-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.mgp-tab {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mgp-tab:hover {
+  border-color: rgba(229,62,62,0.3);
+  color: var(--text);
+}
+
+.mgp-tab.active {
+  background: rgba(229,62,62,0.12);
+  border-color: var(--gc, var(--red));
+  color: var(--gc, var(--red));
+  font-weight: 700;
+}
+
+/* ─── Muscle cards grid ───────────────────────────────────── */
+.mgp-muscles {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ─── Individual muscle card ──────────────────────────────── */
+.muscle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.muscle-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.muscle-header-info { flex: 1; }
+
+.muscle-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 3px;
+  letter-spacing: -0.3px;
+}
+
+.muscle-sci {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.info-toggle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.18s;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.info-toggle:hover,
+.info-toggle.active {
+  background: rgba(229,62,62,0.12);
+  border-color: var(--gc, var(--red));
+  color: var(--gc, var(--red));
+}
+
+/* ─── Info panel ──────────────────────────────────────────── */
+.muscle-info-panel {
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.muscle-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.muscle-info-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--gc, var(--red));
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.muscle-info-val {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.muscle-benefits {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.muscle-benefits li {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Exercise section ────────────────────────────────────── */
+.muscle-ex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 8px;
+}
+
+.muscle-ex-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  opacity: 0.7;
+}
+
+.muscle-ex-count {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--surface3);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.muscle-exercises {
+  padding: 0 12px 12px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .mgp-hero {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px;
+  }
+  .mgp-hero-badge { order: 3; }
+  .mgp-hero-title { font-size: 20px; }
+}
