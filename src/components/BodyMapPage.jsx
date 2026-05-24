@@ -49,7 +49,7 @@ export default function BodyMapPage() {
             onClick={() => setModoCut(m => !m)}
             title="Modo Corte: volume e exercícios para definição"
           >
-            {modoCut ? '🔥 Modo Corte' : '💪 Modo Bulk'}
+            {modoCut ? '🔥 Modo Corte' : '💪 Modo Volume'}
           </button>
         </div>
       </div>
@@ -225,7 +225,7 @@ function InfoPanel({ info, color, modoCut, onClose }) {
 
       {/* Mode badge */}
       <div className="ip-mode-badge" style={{ background: modoCut ? 'rgba(229,62,62,0.12)' : 'rgba(72,187,120,0.12)', borderColor: modoCut ? '#E53E3E' : '#48BB78', color: modoCut ? '#E53E3E' : '#48BB78' }}>
-        {modoCut ? '🔥 Modo Corte ativo' : '💪 Modo Bulk ativo'}
+        {modoCut ? '🔥 Modo Corte ativo' : '💪 Modo Volume ativo'}
       </div>
 
       {/* Key Points */}

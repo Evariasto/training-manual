@@ -248,7 +248,7 @@ function WorkoutExamples({ section, color }) {
                 <th>#</th>
                 <th>Exercício</th>
                 <th>Séries</th>
-                <th>Reps</th>
+                <th>Repetições</th>
                 <th>Descanso</th>
                 <th>Observação</th>
               </tr>

@@ -62,7 +62,7 @@ export default function App() {
 
         <div className="app-logo">
           <span className="logo-icon">💪</span>
-          <span className="logo-text">Training Manual</span>
+          <span className="logo-text">Manual de Treino</span>
         </div>
 
         {/* Active module chip — mobile */}

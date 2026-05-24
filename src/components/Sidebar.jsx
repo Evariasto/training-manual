@@ -23,7 +23,7 @@ export default function Sidebar({ groups, activeId, onSelect, isOpen }) {
         </ul>
 
         <div className="sidebar-footer">
-          <div className="sidebar-footer-text">Training Manual v1.0</div>
+          <div className="sidebar-footer-text">Manual de Treino v1.0</div>
           <div className="sidebar-footer-sub">Módulo 1 — Base Muscular</div>
         </div>
       </div>
