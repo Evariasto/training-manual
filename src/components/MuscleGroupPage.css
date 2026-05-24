@@ -109,16 +109,36 @@
   overflow: hidden;
 }
 
+/* ─── Muscle card header — agora é um botão que abre o modal ─── */
 .muscle-card-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 18px 20px 14px;
+  padding: 16px 20px 14px;
   border-bottom: 1px solid var(--border);
   gap: 12px;
+  /* reset button */
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.18s;
 }
 
-.muscle-header-info { flex: 1; }
+.muscle-card-header:hover {
+  background: rgba(255,255,255,0.025);
+}
+
+.muscle-card-header:hover .muscle-anatomy-label {
+  opacity: 1;
+}
+
+.muscle-header-info { flex: 1; min-width: 0; }
 
 .muscle-name {
   font-size: 17px;
@@ -134,72 +154,36 @@
   font-style: italic;
 }
 
-.info-toggle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 14px;
-  cursor: pointer;
+/* ─── CTA de anatomia no canto direito do header ─── */
+.muscle-anatomy-cta {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
   flex-shrink: 0;
-  transition: all 0.18s;
-  font-family: inherit;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.info-toggle:hover,
-.info-toggle.active {
-  background: rgba(229,62,62,0.12);
-  border-color: var(--gc, var(--red));
   color: var(--gc, var(--red));
 }
 
-/* ─── Info panel ──────────────────────────────────────────── */
-.muscle-info-panel {
-  padding: 14px 20px;
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.muscle-anatomy-icon {
+  width: 26px;
+  height: 26px;
+  opacity: 0.55;
+  transition: opacity 0.18s;
 }
 
-.muscle-info-row {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.muscle-card-header:hover .muscle-anatomy-icon {
+  opacity: 1;
 }
 
-.muscle-info-label {
-  font-size: 10.5px;
-  font-weight: 800;
+.muscle-anatomy-label {
+  font-size: 9.5px;
+  font-weight: 700;
   color: var(--gc, var(--red));
   text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.muscle-info-val {
-  font-size: 13.5px;
-  color: var(--text-muted);
-  line-height: 1.55;
-}
-
-.muscle-benefits {
-  padding-left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.muscle-benefits li {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
+  letter-spacing: 0.8px;
+  opacity: 0;
+  transition: opacity 0.18s;
+  white-space: nowrap;
 }
 
 /* ─── Exercise section ────────────────────────────────────── */
