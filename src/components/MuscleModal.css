@@ -1,0 +1,398 @@
+/* ─────────────────────────────────────────────────────────────────────
+   MuscleModal — Overlay + painel de anatomia
+───────────────────────────────────────────────────────────────────── */
+
+/* ─── Overlay ──────────────────────────────────────────────────────── */
+.mm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: mmFadeIn 0.2s ease;
+}
+
+@keyframes mmFadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+/* ─── Painel ───────────────────────────────────────────────────────── */
+.mm-panel {
+  position: relative;
+  background: #12121A;
+  border: 1px solid #252535;
+  border-bottom: none;
+  border-radius: 22px 22px 0 0;
+  width: 100%;
+  max-height: 94svh;
+  max-height: 94vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: mmSlideUp 0.32s cubic-bezier(0.30, 1.25, 0.50, 1);
+  padding-bottom: env(safe-area-inset-bottom, 10px);
+}
+
+@keyframes mmSlideUp {
+  from { transform: translateY(55%); opacity: 0 }
+  to   { transform: translateY(0);   opacity: 1 }
+}
+
+/* Desktop: dialog centralizado */
+@media (min-width: 720px) {
+  .mm-overlay {
+    align-items: center;
+    padding: 20px;
+  }
+  .mm-panel {
+    border: 1px solid #252535;
+    border-radius: 20px;
+    max-width: 960px;
+    max-height: 90svh;
+    max-height: 90vh;
+    animation: mmPopIn 0.28s cubic-bezier(0.30, 1.25, 0.50, 1);
+  }
+  @keyframes mmPopIn {
+    from { transform: scale(0.92) translateY(12px); opacity: 0 }
+    to   { transform: scale(1)    translateY(0);    opacity: 1 }
+  }
+}
+
+/* ─── Handle mobile ────────────────────────────────────────────────── */
+.mm-handle {
+  width: 38px;
+  height: 4px;
+  background: #2A2A3A;
+  border-radius: 2px;
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+@media (min-width: 720px) {
+  .mm-handle { display: none }
+}
+
+/* ─── Botão fechar ─────────────────────────────────────────────────── */
+.mm-close {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1E1E2C;
+  border: 1px solid #2A2A3A;
+  color: #6868A0;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.16s, border-color 0.16s, color 0.16s;
+  z-index: 10;
+  font-family: inherit;
+}
+
+.mm-close:hover {
+  background: rgba(229, 62, 62, 0.14);
+  border-color: #E53E3E;
+  color: #E53E3E;
+}
+
+/* ─── Layout body ──────────────────────────────────────────────────── */
+.mm-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 14px 16px 24px;
+}
+
+@media (min-width: 720px) {
+  .mm-body {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 24px 28px 32px;
+    gap: 30px;
+  }
+}
+
+/* ─── Coluna esquerda — Ilustração ────────────────────────────────── */
+.mm-col-illus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 720px) {
+  .mm-col-illus {
+    width: 205px;
+    position: sticky;
+    top: 24px;
+  }
+}
+
+/* SVG wrapper com fade ao trocar exercício */
+.mm-svg-wrap {
+  width: 160px;
+  height: 336px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0D0D0D;
+  border: 1px solid #222234;
+  flex-shrink: 0;
+  animation: mmSvgFade 0.3s ease;
+}
+
+@keyframes mmSvgFade {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+@media (min-width: 720px) {
+  .mm-svg-wrap {
+    width: 200px;
+    height: 420px;
+  }
+}
+
+.mm-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Legenda ──────────────────────────────────────────────────────── */
+.mm-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mm-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #5858A0;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.mm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mm-dot--primary   { background: #E53E3E }
+.mm-dot--secondary { background: #C05050 }
+.mm-dot--support   { background: #7A4A44 }
+
+/* ─── Coluna direita — Ficha técnica ───────────────────────────────── */
+.mm-col-sheet {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Cabeçalho do músculo ─────────────────────────────────────────── */
+.mm-header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #1E1E2E;
+  padding-right: 36px;
+}
+
+.mm-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #F0F0F8;
+  margin: 0 0 4px;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+
+.mm-sci {
+  font-size: 12.5px;
+  color: #484878;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─── Seções genéricas ─────────────────────────────────────────────── */
+.mm-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mm-section-title {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--mc, #E53E3E);
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  margin: 0;
+}
+
+.mm-section-text {
+  font-size: 13.5px;
+  color: #8080A8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Dica mente-músculo ───────────────────────────────────────────── */
+.mm-mind {
+  padding: 10px 14px;
+  background: #16161E;
+  border-left: 3px solid var(--mc, #E53E3E);
+  border-radius: 0 8px 8px 0;
+}
+
+.mm-mind .mm-section-text {
+  font-style: italic;
+  color: #A8A8C8;
+}
+
+/* ─── Lista de exercícios ──────────────────────────────────────────── */
+.mm-ex-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mm-ex-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 13px;
+  background: #18182A;
+  border: 1px solid #242434;
+  border-radius: 9px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mm-ex-btn:hover {
+  background: #1C1C2E;
+  border-color: #383858;
+}
+
+.mm-ex-btn.active {
+  background: rgba(229, 62, 62, 0.1);
+  border-color: var(--mc, #E53E3E);
+}
+
+.mm-ex-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #D0D0E8;
+  line-height: 1.35;
+}
+
+.mm-ex-diff {
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.mm-ex-diff.d-beginner     { background: rgba(72,187,120,0.15); color: #68D391 }
+.mm-ex-diff.d-intermediate { background: rgba(237,137,54,0.15);  color: #F6AD55 }
+.mm-ex-diff.d-advanced     { background: rgba(229,62,62,0.15);   color: #FC8181 }
+
+/* ─── Detalhe do exercício ─────────────────────────────────────────── */
+.mm-ex-detail {
+  background: #13131D;
+  border: 1px solid #1E1E2E;
+  border-radius: 12px;
+  padding: 14px 16px;
+  gap: 10px;
+}
+
+.mm-volume {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--mc, #E53E3E);
+  background: rgba(229, 62, 62, 0.08);
+  border-radius: 6px;
+  padding: 5px 10px;
+  line-height: 1.5;
+}
+
+.mm-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mm-step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.mm-step-num {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #222234;
+  color: #5858A0;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.mm-step-text {
+  font-size: 13px;
+  color: #8888B0;
+  line-height: 1.55;
+}
+
+/* ─── Erros comuns ─────────────────────────────────────────────────── */
+.mm-mistakes {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid #1E1E2E;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mm-mistakes-title {
+  font-size: 9px;
+  font-weight: 800;
+  color: rgba(229, 62, 62, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 4px;
+}
+
+.mm-mistake {
+  font-size: 12.5px;
+  color: #705050;
+  line-height: 1.45;
+  margin: 0;
+}
