@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PhraseGenerator from './PhraseGenerator.jsx'
 import './ProtocolPage.css'
 
 const DIFF_LABEL = { beginner: 'Iniciante', intermediate: 'Intermediário', advanced: 'Avançado' }
@@ -57,6 +58,10 @@ export default function ProtocolPage({ protocol }) {
               <Section key={si} section={section} color={protocol.color} />
             ))}
           </div>
+
+          <PhraseGenerator
+            context={`${protocol.title} — ${chapter.icon} ${chapter.title}`}
+          />
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ExerciseCard from './ExerciseCard.jsx'
+import PhraseGenerator from './PhraseGenerator.jsx'
 import './MuscleGroupPage.css'
 
 export default function MuscleGroupPage({ group }) {
@@ -51,6 +52,14 @@ export default function MuscleGroupPage({ group }) {
           ))
         }
       </div>
+
+      <PhraseGenerator
+        context={
+          activeMuscle
+            ? `Treinamento de ${activeMuscle.name} (${group.name})`
+            : `Treinamento do grupo muscular ${group.name}`
+        }
+      />
     </div>
   )
 }
