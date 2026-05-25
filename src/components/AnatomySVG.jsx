@@ -1,63 +1,72 @@
 import React from 'react'
 
 const C = {
-  bg:      '#0D0D0D',
-  body:    '#2A1A0E',
-  bodyStr: '#180E06',
-  skin:    '#C4956A',
-  skinDk:  '#3A2010',
-  pri:     '#E53E3E',
-  sec:     '#C05050',
-  sup:     '#7A4A44',
-  def:     '#1A0E06',   // muscle definition / groove lines
-  lbl:     '#C8C8E8',
-  lead:    '#5858A0',
-  arr:     '#DD8B20',
+  bg:'#0D0D0D', body:'#2A1A0E', bodyStr:'#180E06',
+  def:'#080610', lbl:'#D8D8F0', lead:'#5858A0', arr:'#DD8B20',
 }
 
-// ─── Body segments — wide, muscular athletic proportions ──────────
-// Shoulder span: x 28–172 (144 px). Arms held slightly out.
-// viewBox 0 0 200 420
+// Atlas-style color per muscle group
+const MCOLOR = {
+  // Chest — rose
+  pec_upper_l:'#E83878', pec_upper_r:'#E83878',
+  pec_lower_l:'#E83878', pec_lower_r:'#E83878',
+  // Anterior / lateral delt — violet
+  delt_ant_l:'#9B5DE5',  delt_ant_r:'#9B5DE5',
+  delt_lat_l:'#8040CC',  delt_lat_r:'#8040CC',
+  // Biceps group — azure
+  bicep_l:'#2196F3',     bicep_r:'#2196F3',
+  brachial_l:'#1565C0',  brachial_r:'#1565C0',
+  forearm_l:'#58C8FA',   forearm_r:'#58C8FA',
+  // Abs / core — amber
+  abs_u:'#F07028',       abs_m:'#F07028',       abs_l:'#F07028',
+  obliq_l:'#F09050',     obliq_r:'#F09050',
+  obliq_lo_l:'#F09050',  obliq_lo_r:'#F09050',
+  // Serratus — coral
+  ser1_l:'#FF5A5A',      ser2_l:'#FF5A5A',      ser3_l:'#FF5A5A',
+  ser1_r:'#FF5A5A',      ser2_r:'#FF5A5A',      ser3_r:'#FF5A5A',
+  // Quads — lime-yellow
+  quad_l:'#BBCF18',      quad_r:'#BBCF18',
+  quad_vm_l:'#9AAD12',   quad_vm_r:'#9AAD12',
+  adduct_l:'#F0A030',    adduct_r:'#F0A030',
+  tibial_l:'#5DB85A',    tibial_r:'#5DB85A',
+  // Trapezius — teal
+  trap_up_l:'#18C8D8',   trap_up_r:'#18C8D8',   trap_mid:'#18C8D8',
+  // Rear delt — orchid
+  rear_delt_l:'#B050D0', rear_delt_r:'#B050D0',
+  // Lats — emerald
+  lat_l:'#38A848',       lat_r:'#38A848',
+  rhomboid:'#287038',
+  erector_l:'#88C840',   erector_r:'#88C840',
+  // Triceps — cerulean
+  tricep_l:'#28B8F8',    tricep_r:'#28B8F8',
+  // Glutes — vermillion
+  glute_l:'#F04040',     glute_r:'#F04040',
+  // Hamstrings — indigo
+  ham_l:'#7040F8',       ham_r:'#7040F8',
+  // Calves — cobalt
+  calf_b_l:'#4858C0',    calf_b_r:'#4858C0',
+}
+
+// ─── Body segments ───────────────────────────────────────────────
 const SEG = {
-  head:  null,
   neck:  'M91,40 C88,50 88,62 92,66 L108,66 C112,62 112,50 109,40 Z',
-  torso: `M28,68
-    C18,92 14,132 16,172
-    C18,194 30,214 60,222
-    L140,222
-    C170,214 182,194 184,172
-    C186,132 182,92 172,68 Z`,
-  arm_l: `M28,68
-    C14,72 0,98 0,126
-    C0,156 6,180 18,200
-    C24,212 38,220 56,216
-    C70,212 76,198 74,178
-    C72,154 64,120 54,94
-    C48,78 38,64 28,68 Z`,
-  arm_r: `M172,68
-    C186,72 200,98 200,126
-    C200,156 194,180 182,200
-    C176,212 162,220 144,216
-    C130,212 124,198 126,178
-    C128,154 136,120 146,94
-    C152,78 162,64 172,68 Z`,
-  leg_l: `M36,220
-    C24,246 14,284 12,324
-    C10,358 14,388 20,408
-    C24,418 40,420 60,419
-    C78,418 86,406 84,386
-    C82,358 78,322 76,308
-    C70,272 64,242 56,220 Z`,
-  leg_r: `M164,220
-    C176,246 186,284 188,324
-    C190,358 186,388 180,408
-    C176,418 160,420 140,419
-    C122,418 114,406 116,386
-    C118,358 122,322 124,308
-    C130,272 136,242 144,220 Z`,
+  torso: `M28,68 C18,92 14,132 16,172 C18,194 30,214 60,222 L140,222
+    C170,214 182,194 184,172 C186,132 182,92 172,68 Z`,
+  arm_l: `M28,68 C14,72 0,98 0,126 C0,156 6,180 18,200
+    C24,212 38,220 56,216 C70,212 76,198 74,178
+    C72,154 64,120 54,94 C48,78 38,64 28,68 Z`,
+  arm_r: `M172,68 C186,72 200,98 200,126 C200,156 194,180 182,200
+    C176,212 162,220 144,216 C130,212 124,198 126,178
+    C128,154 136,120 146,94 C152,78 162,64 172,68 Z`,
+  leg_l: `M36,220 C24,246 14,284 12,324 C10,358 14,388 20,408
+    C24,418 40,420 60,419 C78,418 86,406 84,386
+    C82,358 78,322 76,308 C70,272 64,242 56,220 Z`,
+  leg_r: `M164,220 C176,246 186,284 188,324 C190,358 186,388 180,408
+    C176,418 160,420 140,419 C122,418 114,406 116,386
+    C118,358 122,322 124,308 C130,272 136,242 144,220 Z`,
 }
 
-// ─── Muscle paths (wider, more anatomical) ───────────────────────
+// ─── Muscle paths ─────────────────────────────────────────────────
 const P = {
   // ── FRONT ────────────────────────────────────────────────────
   pec_upper_l: 'M100,70 C82,64 62,68 54,80 C48,90 52,102 68,104 C82,105 98,99 100,88 Z',
@@ -85,7 +94,6 @@ const P = {
   obliq_lo_l:  'M44,194 C38,210 40,230 52,240 L82,232 L78,194 Z',
   obliq_lo_r:  'M156,194 C162,210 160,230 148,240 L118,232 L122,194 Z',
 
-  // Serratus anterior — finger-like projections on ribcage sides
   ser1_l:      'M48,118 C42,124 42,134 50,138 C56,140 64,136 66,128 C68,120 64,114 56,116 Z',
   ser2_l:      'M44,138 C38,146 40,156 48,160 C54,162 62,158 64,150 C66,142 60,136 54,136 Z',
   ser3_l:      'M46,158 C40,166 42,176 50,180 C56,182 64,178 64,170 C64,162 58,156 52,156 Z',
@@ -102,7 +110,7 @@ const P = {
   tibial_l:    'M26,370 C16,390 14,410 18,418 C22,420 38,420 56,419 C70,418 76,408 74,390 C72,368 62,348 50,344 Z',
   tibial_r:    'M174,370 C184,390 186,410 182,418 C178,420 162,420 144,419 C130,418 124,408 126,390 C128,368 138,348 150,344 Z',
 
-  // ── BACK ────────────────────────────────────────────────────
+  // ── BACK ─────────────────────────────────────────────────────
   trap_up_l:   'M100,70 C88,66 70,70 62,82 C56,92 62,104 78,106 C90,107 100,100 100,90 Z',
   trap_up_r:   'M100,70 C112,66 130,70 138,82 C144,92 138,104 122,106 C110,107 100,100 100,90 Z',
   trap_mid:    'M78,106 C68,116 66,138 68,166 C70,178 82,184 100,182 C118,184 130,178 132,166 C134,138 132,116 122,106 L100,116 Z',
@@ -152,38 +160,26 @@ const MV = {
   calf_b_l:'back',     calf_b_r:'back',
 }
 
-// ─── Anatomical definition lines (muscle groove / separation) ─────
-// Rendered as dark strokes to show muscle structure even on base layer
+// ─── Anatomical definition lines ──────────────────────────────────
 const DEF = {
   front: [
-    // Pec central groove
     { d:'M100,70 L100,154', sw:1.4 },
-    // Clavicles
     { d:'M36,64 C58,58 82,64 100,70', sw:0.9 },
     { d:'M164,64 C142,58 118,64 100,70', sw:0.9 },
-    // Pec/delt crease
     { d:'M54,94 C58,102 56,116', sw:0.8 },
     { d:'M146,94 C142,102 144,116', sw:0.8 },
-    // Ab center line
     { d:'M100,126 L100,196', sw:1.2 },
-    // Hip crease
     { d:'M58,216 C76,208 100,206 124,208 142,216', sw:0.9 },
-    // Bicep head split (tiny)
     { d:'M12,154 C14,162 14,172', sw:0.7 },
     { d:'M188,154 C186,162 186,172', sw:0.7 },
   ],
   back: [
-    // Spine groove
     { d:'M100,70 L100,224', sw:1.2 },
-    // Scapula borders
     { d:'M68,90 C74,106 76,128 72,148', sw:0.8 },
     { d:'M132,90 C126,106 124,128 128,148', sw:0.8 },
-    // Glute separation
     { d:'M100,224 C100,248 100,272 100,296', sw:1.0 },
-    // Trap/delt separation line
     { d:'M54,96 C58,106 56,116', sw:0.8 },
     { d:'M146,96 C142,106 144,116', sw:0.8 },
-    // Lower erector crease
     { d:'M90,170 L90,224', sw:0.7 },
     { d:'M110,170 L110,224', sw:0.7 },
   ],
@@ -413,56 +409,37 @@ const CFG = {
 }
 
 // ─── Component ────────────────────────────────────────────────────
-export default function AnatomySVG({ muscleId, className }) {
-  const cfg         = CFG[muscleId]
-  const view        = cfg?.view || 'front'
+export default function AnatomySVG({ muscleId, forcedView, className }) {
+  const cfg      = CFG[muscleId]
+  const view     = forcedView ?? cfg?.view ?? 'front'
+  const showLbls = !forcedView || forcedView === cfg?.view
+
   const baseMuscles = Object.keys(MV).filter(k => MV[k] === view)
-  const highlighted = new Set([
-    ...(cfg?.primary   || []),
-    ...(cfg?.secondary || []),
-    ...(cfg?.support   || []),
-  ])
-  const showAbsGrid = highlighted.has('abs_u') || highlighted.has('abs_m') || highlighted.has('abs_l')
-  const showPecLine = highlighted.has('pec_lower_l') || highlighted.has('pec_upper_l')
+
+  // Only highlight muscles that belong to this view
+  const primaryInView   = (cfg?.primary   || []).filter(k => MV[k] === view)
+  const secondaryInView = (cfg?.secondary || []).filter(k => MV[k] === view)
+  const supportInView   = (cfg?.support   || []).filter(k => MV[k] === view)
+  const highlightedInView = new Set([...primaryInView, ...secondaryInView, ...supportInView])
+
+  const showAbsGrid = highlightedInView.has('abs_u') || highlightedInView.has('abs_m') || highlightedInView.has('abs_l')
+  const showPecLine = highlightedInView.has('pec_lower_l') || highlightedInView.has('pec_upper_l')
   const defLines    = DEF[view] || []
 
   return (
     <svg viewBox="0 0 200 420" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        {/* 3-D radial gradients for muscles */}
-        <radialGradient id="gPri" cx="45%" cy="35%" r="58%">
-          <stop offset="0%"   stopColor="#FF7070"/>
-          <stop offset="60%"  stopColor="#E53E3E"/>
-          <stop offset="100%" stopColor="#8B1A1A"/>
-        </radialGradient>
-        <radialGradient id="gSec" cx="45%" cy="35%" r="58%">
-          <stop offset="0%"   stopColor="#D06060"/>
-          <stop offset="60%"  stopColor="#B03030"/>
-          <stop offset="100%" stopColor="#6B1A1A"/>
-        </radialGradient>
-        <radialGradient id="gSup" cx="45%" cy="35%" r="55%">
-          <stop offset="0%"   stopColor="#9A6060"/>
-          <stop offset="100%" stopColor="#4A2A2A"/>
-        </radialGradient>
-        <radialGradient id="gSkin" cx="45%" cy="30%" r="62%">
-          <stop offset="0%"   stopColor="#D8A878"/>
-          <stop offset="55%"  stopColor="#C4956A"/>
-          <stop offset="100%" stopColor="#7A4E2E"/>
-        </radialGradient>
-        {/* Arrow markers */}
-        <marker id="aE" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+        <marker id={`aE-${view}`} markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
           <path d="M0,0 L0,7 L7,3.5 Z" fill={C.arr}/>
         </marker>
-        <marker id="aS" markerWidth="7" markerHeight="7" refX="2" refY="3.5" orient="auto-start-reverse">
+        <marker id={`aS-${view}`} markerWidth="7" markerHeight="7" refX="2" refY="3.5" orient="auto-start-reverse">
           <path d="M0,0 L0,7 L7,3.5 Z" fill={C.arr}/>
         </marker>
-        {/* Glow for primary muscles */}
-        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="3.5" result="blur"/>
+        <filter id={`glow-${view}`} x="-35%" y="-35%" width="170%" height="170%">
+          <feGaussianBlur stdDeviation="4.5" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
-        {/* Drop shadow for body segments */}
-        <filter id="shadow" x="-8%" y="-4%" width="116%" height="114%">
+        <filter id={`shadow-${view}`} x="-8%" y="-4%" width="116%" height="114%">
           <feDropShadow dx="1" dy="2" stdDeviation="3.5" floodColor="#000" floodOpacity="0.55"/>
         </filter>
       </defs>
@@ -470,101 +447,97 @@ export default function AnatomySVG({ muscleId, className }) {
       <rect width="200" height="420" fill={C.bg}/>
 
       {/* ── Body segments ──────────────────────────────────── */}
-      <path d={SEG.torso} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter="url(#shadow)"/>
-      <path d={SEG.arm_l} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter="url(#shadow)"/>
-      <path d={SEG.arm_r} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter="url(#shadow)"/>
-      <path d={SEG.leg_l} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter="url(#shadow)"/>
-      <path d={SEG.leg_r} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter="url(#shadow)"/>
+      <path d={SEG.torso} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter={`url(#shadow-${view})`}/>
+      <path d={SEG.arm_l} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter={`url(#shadow-${view})`}/>
+      <path d={SEG.arm_r} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter={`url(#shadow-${view})`}/>
+      <path d={SEG.leg_l} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter={`url(#shadow-${view})`}/>
+      <path d={SEG.leg_r} fill={C.body} stroke={C.bodyStr} strokeWidth="0.8" filter={`url(#shadow-${view})`}/>
       <ellipse cx="100" cy="23" rx="18" ry="20" fill={C.body} stroke={C.bodyStr} strokeWidth="0.8"/>
       <path d={SEG.neck}  fill={C.body} stroke={C.bodyStr} strokeWidth="0.6"/>
 
-      {/* ── Base muscles — skin gradient + definition border ─ */}
-      {baseMuscles.filter(k => !highlighted.has(k)).map(k => (
+      {/* ── Base muscles — atlas group color, dimmed ────────── */}
+      {baseMuscles.filter(k => !highlightedInView.has(k)).map(k => (
         <path key={`b-${k}`} d={P[k]}
-          fill="url(#gSkin)" fillOpacity="0.60"
-          stroke={C.skinDk} strokeWidth="0.75" strokeOpacity="0.70"/>
+          fill={MCOLOR[k] || '#888'} fillOpacity="0.38"
+          stroke="#000" strokeOpacity="0.18" strokeWidth="0.5"/>
       ))}
 
-      {/* ── Anatomical definition lines (always visible) ───── */}
+      {/* ── Anatomical definition lines ─────────────────────── */}
       {defLines.map((l, i) => (
         <path key={`def${i}`} d={l.d}
           fill="none" stroke={C.def} strokeWidth={l.sw}
-          strokeOpacity="0.45" strokeLinecap="round"/>
+          strokeOpacity="0.60" strokeLinecap="round"/>
       ))}
 
-      {cfg ? (
-        <>
-          {/* Support */}
-          {cfg.support?.map((k,i) => P[k] && (
-            <path key={`s${i}`} d={P[k]}
-              fill="url(#gSup)" fillOpacity="0.80"
-              stroke={C.skinDk} strokeWidth="0.7"/>
-          ))}
-          {/* Secondary */}
-          {cfg.secondary?.map((k,i) => P[k] && (
-            <path key={`e${i}`} d={P[k]}
-              fill="url(#gSec)" fillOpacity="0.90"
-              stroke="#6B1A1A" strokeWidth="0.6"/>
-          ))}
-          {/* Primary */}
-          {cfg.primary?.map((k,i) => P[k] && (
-            <path key={`p${i}`} d={P[k]}
-              fill="url(#gPri)" fillOpacity="0.97"
-              stroke="#7A1010" strokeWidth="0.7"
-              filter="url(#glow)"/>
-          ))}
+      {/* ── Highlighted muscles ─────────────────────────────── */}
+      {supportInView.map((k, i) => P[k] && (
+        <path key={`s${i}`} d={P[k]}
+          fill={MCOLOR[k] || '#888'} fillOpacity="0.65"
+          stroke="#000" strokeOpacity="0.22" strokeWidth="0.6"/>
+      ))}
+      {secondaryInView.map((k, i) => P[k] && (
+        <path key={`e${i}`} d={P[k]}
+          fill={MCOLOR[k] || '#888'} fillOpacity="0.82"
+          stroke="#000" strokeOpacity="0.28" strokeWidth="0.6"/>
+      ))}
+      {primaryInView.map((k, i) => P[k] && (
+        <path key={`p${i}`} d={P[k]}
+          fill={MCOLOR[k] || '#888'} fillOpacity="1.0"
+          stroke="#000" strokeOpacity="0.32" strokeWidth="0.7"
+          filter={`url(#glow-${view})`}/>
+      ))}
 
-          {/* Abs segmentation grid */}
-          {showAbsGrid && (
-            <g stroke={C.def} strokeWidth="1.5" opacity="0.75">
-              <line x1="100" y1="126" x2="100" y2="196"/>
-              <line x1="80"  y1="150" x2="120" y2="150"/>
-              <line x1="80"  y1="174" x2="120" y2="174"/>
-            </g>
-          )}
-
-          {/* Pec center groove (extra prominent when pec focused) */}
-          {showPecLine && (
-            <line x1="100" y1="70" x2="100" y2="154"
-              stroke={C.def} strokeWidth="1.6" opacity="0.7"/>
-          )}
-
-          {/* Movement arrow */}
-          {cfg.arrow && (
-            <path d={cfg.arrow.d}
-              stroke={C.arr} strokeWidth="2.4" fill="none" strokeLinecap="round"
-              markerEnd="url(#aE)"
-              markerStart={cfg.arrow.double ? 'url(#aS)' : undefined}
-              opacity="0.90"/>
-          )}
-
-          {/* Labels */}
-          {cfg.labels?.map((lbl, i) => {
-            const isLeft   = lbl.anchor === 'start'
-            const tw       = lbl.text.length * 4.5
-            const lineEndX = isLeft ? lbl.x + tw + 2 : lbl.x - tw - 2
-            return (
-              <g key={`l${i}`}>
-                {lbl.dot && (
-                  <>
-                    <line x1={lineEndX} y1={lbl.y - 2} x2={lbl.dot.cx} y2={lbl.dot.cy}
-                      stroke={C.lead} strokeWidth="0.8" strokeDasharray="3 2"/>
-                    <circle cx={lbl.dot.cx} cy={lbl.dot.cy} r="2.4" fill={C.lead}/>
-                  </>
-                )}
-                <text x={lbl.x} y={lbl.y} textAnchor={lbl.anchor}
-                  fill={C.lbl} fontSize="8.5" fontWeight="700"
-                  fontFamily="system-ui,-apple-system,BlinkMacSystemFont,sans-serif">
-                  {lbl.text}
-                </text>
-              </g>
-            )
-          })}
-        </>
-      ) : (
-        <text x="100" y="220" textAnchor="middle" fill="#444" fontSize="11"
-          fontFamily="system-ui,sans-serif">Ilustração em breve</text>
+      {/* Abs grid */}
+      {showAbsGrid && (
+        <g stroke={C.def} strokeWidth="1.5" opacity="0.80">
+          <line x1="100" y1="126" x2="100" y2="196"/>
+          <line x1="80"  y1="150" x2="120" y2="150"/>
+          <line x1="80"  y1="174" x2="120" y2="174"/>
+        </g>
       )}
+      {/* Pec groove */}
+      {showPecLine && (
+        <line x1="100" y1="70" x2="100" y2="154"
+          stroke={C.def} strokeWidth="1.6" opacity="0.72"/>
+      )}
+
+      {/* ── Labels + arrow (primary view only) ─────────────── */}
+      {showLbls && cfg?.arrow && (
+        <path d={cfg.arrow.d}
+          stroke={C.arr} strokeWidth="2.4" fill="none" strokeLinecap="round"
+          markerEnd={`url(#aE-${view})`}
+          markerStart={cfg.arrow.double ? `url(#aS-${view})` : undefined}
+          opacity="0.90"/>
+      )}
+      {showLbls && cfg?.labels?.map((lbl, i) => {
+        const isLeft   = lbl.anchor === 'start'
+        const tw       = lbl.text.length * 4.5
+        const lineEndX = isLeft ? lbl.x + tw + 2 : lbl.x - tw - 2
+        return (
+          <g key={`l${i}`}>
+            {lbl.dot && (
+              <>
+                <line x1={lineEndX} y1={lbl.y - 2} x2={lbl.dot.cx} y2={lbl.dot.cy}
+                  stroke={C.lead} strokeWidth="0.8" strokeDasharray="3 2"/>
+                <circle cx={lbl.dot.cx} cy={lbl.dot.cy} r="2.4" fill={C.lead}/>
+              </>
+            )}
+            <text x={lbl.x} y={lbl.y} textAnchor={lbl.anchor}
+              fill={C.lbl} fontSize="8.5" fontWeight="700"
+              fontFamily="system-ui,-apple-system,BlinkMacSystemFont,sans-serif">
+              {lbl.text}
+            </text>
+          </g>
+        )
+      })}
+
+      {/* ── View label ─────────────────────────────────────── */}
+      <rect x="72" y="408" width="56" height="10" fill="#0D0D0D" fillOpacity="0.88" rx="3"/>
+      <text x="100" y="416.5" textAnchor="middle"
+        fill="#404468" fontSize="7" fontWeight="800" letterSpacing="2"
+        fontFamily="system-ui,-apple-system,BlinkMacSystemFont,sans-serif">
+        {view === 'front' ? 'FRENTE' : 'COSTAS'}
+      </text>
     </svg>
   )
 }

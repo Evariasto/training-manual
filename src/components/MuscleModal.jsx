@@ -69,8 +69,13 @@ export default function MuscleModal({ muscle, groupColor, onClose }) {
 
           {/* ── Coluna esquerda: Ilustração ─────────────────── */}
           <div className="mm-col-illus">
-            <div className="mm-svg-wrap" key={svgKey}>
-              <AnatomySVG muscleId={muscle.id} className="mm-svg" />
+            <div className="mm-svg-pair" key={svgKey}>
+              <div className="mm-svg-wrap">
+                <AnatomySVG muscleId={muscle.id} forcedView="front" className="mm-svg" />
+              </div>
+              <div className="mm-svg-wrap">
+                <AnatomySVG muscleId={muscle.id} forcedView="back" className="mm-svg" />
+              </div>
             </div>
 
             <div className="mm-legend">

@@ -132,21 +132,17 @@
 
 @media (min-width: 720px) {
   .mm-col-illus {
-    width: 205px;
+    width: 342px;
     position: sticky;
     top: 24px;
   }
 }
 
-/* SVG wrapper com fade ao trocar exercício */
-.mm-svg-wrap {
-  width: 160px;
-  height: 336px;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #0D0D0D;
-  border: 1px solid #222234;
-  flex-shrink: 0;
+/* ─── Par frente + costas ──────────────────────────────────────── */
+.mm-svg-pair {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
   animation: mmSvgFade 0.3s ease;
 }
 
@@ -155,10 +151,21 @@
   to   { opacity: 1 }
 }
 
+/* SVG wrapper */
+.mm-svg-wrap {
+  width: 145px;
+  height: 305px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0D0D0D;
+  border: 1px solid #1E1E2E;
+  flex-shrink: 0;
+}
+
 @media (min-width: 720px) {
   .mm-svg-wrap {
-    width: 200px;
-    height: 420px;
+    width: 165px;
+    height: 347px;
   }
 }
 
