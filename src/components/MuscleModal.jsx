@@ -71,10 +71,10 @@ export default function MuscleModal({ muscle, groupColor, onClose }) {
           <div className="mm-col-illus">
             <div className="mm-svg-pair" key={svgKey}>
               <div className="mm-svg-wrap">
-                <AnatomySVG muscleId={muscle.id} forcedView="front" className="mm-svg" />
+                <AnatomySVG muscleId={muscle.id} forcedView="front" groupColor={groupColor} />
               </div>
               <div className="mm-svg-wrap">
-                <AnatomySVG muscleId={muscle.id} forcedView="back" className="mm-svg" />
+                <AnatomySVG muscleId={muscle.id} forcedView="back" groupColor={groupColor} />
               </div>
             </div>
 
