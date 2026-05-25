@@ -83,6 +83,9 @@ export default function MuscleModal({ muscle, groupColor, onClose }) {
               <span className="mm-legend-item">
                 <span className="mm-dot mm-dot--support" />Suporte
               </span>
+              <span className="mm-legend-item mm-legend-arrow">
+                <span className="mm-arrow-icon">→</span>Movimento
+              </span>
             </div>
           </div>
 

@@ -198,6 +198,14 @@
 .mm-dot--secondary { background: #C05050 }
 .mm-dot--support   { background: #7A4A44 }
 
+.mm-legend-arrow { color: #DD8B20 }
+
+.mm-arrow-icon {
+  font-size: 11px;
+  line-height: 1;
+  color: #DD8B20;
+}
+
 /* ─── Coluna direita — Ficha técnica ───────────────────────────────── */
 .mm-col-sheet {
   flex: 1;
