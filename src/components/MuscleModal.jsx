@@ -69,8 +69,13 @@ export default function MuscleModal({ muscle, groupColor, onClose }) {
 
           {/* ── Coluna esquerda: Ilustração ─────────────────── */}
           <div className="mm-col-illus">
-            <div className="mm-svg-wrap" key={svgKey}>
-              <AnatomySVG muscleId={muscle.id} className="mm-svg" />
+            <div className="mm-svg-pair" key={svgKey}>
+              <div className="mm-svg-wrap">
+                <AnatomySVG muscleId={muscle.id} forcedView="front" groupColor={groupColor} />
+              </div>
+              <div className="mm-svg-wrap">
+                <AnatomySVG muscleId={muscle.id} forcedView="back" groupColor={groupColor} />
+              </div>
             </div>
 
             <div className="mm-legend">
@@ -82,6 +87,9 @@ export default function MuscleModal({ muscle, groupColor, onClose }) {
               </span>
               <span className="mm-legend-item">
                 <span className="mm-dot mm-dot--support" />Suporte
+              </span>
+              <span className="mm-legend-item mm-legend-arrow">
+                <span className="mm-arrow-icon">→</span>Movimento
               </span>
             </div>
           </div>
