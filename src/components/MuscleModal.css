@@ -99,9 +99,9 @@
 }
 
 .mm-close:hover {
-  background: rgba(229, 62, 62, 0.14);
-  border-color: #E53E3E;
-  color: #E53E3E;
+  background: rgba(124, 58, 237, 0.14);
+  border-color: #8B5CF6;
+  color: #8B5CF6;
 }
 
 /* ─── Layout body ──────────────────────────────────────────────────── */
@@ -207,7 +207,7 @@
   flex-shrink: 0;
 }
 
-.mm-dot--primary   { background: #E53E3E }
+.mm-dot--primary   { background: #8B5CF6 }
 .mm-dot--secondary { background: #C05050 }
 .mm-dot--support   { background: #7A4A44 }
 
@@ -261,7 +261,7 @@
 .mm-section-title {
   font-size: 9.5px;
   font-weight: 800;
-  color: var(--mc, #E53E3E);
+  color: var(--mc, #8B5CF6);
   text-transform: uppercase;
   letter-spacing: 1.1px;
   margin: 0;
@@ -278,7 +278,7 @@
 .mm-mind {
   padding: 10px 14px;
   background: #16161E;
-  border-left: 3px solid var(--mc, #E53E3E);
+  border-left: 3px solid var(--mc, #8B5CF6);
   border-radius: 0 8px 8px 0;
 }
 
@@ -316,8 +316,8 @@
 }
 
 .mm-ex-btn.active {
-  background: rgba(229, 62, 62, 0.1);
-  border-color: var(--mc, #E53E3E);
+  background: rgba(124, 58, 237, 0.1);
+  border-color: var(--mc, #8B5CF6);
 }
 
 .mm-ex-name {
@@ -338,7 +338,7 @@
 
 .mm-ex-diff.d-beginner     { background: rgba(72,187,120,0.15); color: #68D391 }
 .mm-ex-diff.d-intermediate { background: rgba(237,137,54,0.15);  color: #F6AD55 }
-.mm-ex-diff.d-advanced     { background: rgba(229,62,62,0.15);   color: #FC8181 }
+.mm-ex-diff.d-advanced     { background: rgba(124,58,237,0.15);   color: #FC8181 }
 
 /* ─── Detalhe do exercício ─────────────────────────────────────────── */
 .mm-ex-detail {
@@ -352,8 +352,8 @@
 .mm-volume {
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--mc, #E53E3E);
-  background: rgba(229, 62, 62, 0.08);
+  color: var(--mc, #8B5CF6);
+  background: rgba(124, 58, 237, 0.08);
   border-radius: 6px;
   padding: 5px 10px;
   line-height: 1.5;
@@ -405,7 +405,7 @@
 .mm-mistakes-title {
   font-size: 9px;
   font-weight: 800;
-  color: rgba(229, 62, 62, 0.5);
+  color: rgba(124, 58, 237, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0 0 4px;

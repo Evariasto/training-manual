@@ -87,8 +87,8 @@
 }
 
 .cut-toggle.active {
-  background: rgba(229,62,62,0.12);
-  border-color: rgba(229,62,62,0.35);
+  background: rgba(124,58,237,0.12);
+  border-color: rgba(124,58,237,0.35);
   color: var(--red);
 }
 
@@ -257,7 +257,7 @@
   font-family: inherit;
   -webkit-tap-highlight-color: transparent;
 }
-.ip-close:hover { background: rgba(229,62,62,0.12); border-color: var(--red); color: var(--red); }
+.ip-close:hover { background: rgba(124,58,237,0.12); border-color: var(--red); color: var(--red); }
 
 .ip-mode-badge {
   margin: 12px 20px 0;
