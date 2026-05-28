@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { getExerciseImgs } from '../data/exerciseGifs.js'
 import './ExerciseCard.css'
 
 const DIFF_LABEL = {
@@ -16,7 +15,6 @@ const DIFF_CLASS = {
 
 export default function ExerciseCard({ exercise, accentColor }) {
   const [expanded, setExpanded] = useState(false)
-  const imgs = getExerciseImgs(exercise.name)
 
   return (
     <div className={`ex-card ${expanded ? 'expanded' : ''}`} style={{ '--ac': accentColor }}>
@@ -33,32 +31,12 @@ export default function ExerciseCard({ exercise, accentColor }) {
             ))}
           </div>
         </div>
-        {imgs && (
-          <div className="ex-thumb-wrap">
-            <img src={imgs.start} alt="" className="ex-thumb" loading="lazy" />
-          </div>
-        )}
         <span className={`ex-chevron ${expanded ? 'up' : ''}`}>▾</span>
       </button>
 
       {/* Expandable content */}
       {expanded && (
         <div className="ex-card-body">
-
-          {/* Exercise demo images */}
-          {imgs && (
-            <div className="ex-demo">
-              <div className="ex-demo-frame">
-                <img src={imgs.start} alt="Posição inicial" className="ex-demo-img" loading="lazy" />
-                <span className="ex-demo-label">Início</span>
-              </div>
-              <div className="ex-demo-frame">
-                <img src={imgs.end} alt="Posição final" className="ex-demo-img" loading="lazy" />
-                <span className="ex-demo-label">Final</span>
-              </div>
-            </div>
-          )}
-
           {/* How To */}
           {exercise.howTo && exercise.howTo.length > 0 && (
             <div className="ex-section">
