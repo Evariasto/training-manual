@@ -198,6 +198,43 @@ export const PEITORAL_PROTOCOL = {
               ],
             },
             {
+              name: 'Máquinas — Pressão & Isolamento',
+              icon: '🖥️',
+              color: '#3182CE',
+              exercises: [
+                {
+                  name: 'Supino Reto Máquina Horizontal',
+                  difficulty: 'beginner',
+                  pattern: 'Bilateral Composto',
+                  equipment: ['Máquina de Chest Press'],
+                  musclesFocus: 'Peitoral Médio + Deltóide Anterior + Tríceps',
+                  execution: [
+                    'Ajuste o assento para os punhos ficarem na altura do médio do peitoral',
+                    'Encaixe as costas completamente no encosto — não arqueie a lombar',
+                    'Empurre horizontalmente espremendo o peito — cotovelos levemente abaixo dos ombros',
+                    'No ponto final, pause 1 segundo com o peitoral contraído',
+                    'Retorne até sentir leve alongamento — não deixe o peso pousar nas placas',
+                  ],
+                  tip: 'Vantagem sobre o supino livre: movimento guiado permite focar 100% na contração sem preocupação com equilíbrio. Ideal para pre-exhaust e pump ao final do treino.',
+                },
+                {
+                  name: 'Crossover Neutro — Polia Média',
+                  difficulty: 'intermediate',
+                  pattern: 'Bilateral',
+                  equipment: ['Polia dupla', 'Alças'],
+                  musclesFocus: 'Peitoral Médio — adução horizontal com tensão contínua',
+                  execution: [
+                    'Polias na altura dos ombros — fique no centro',
+                    'Passo à frente para criar tensão antes de começar',
+                    'Tronco levemente inclinado para frente — cotovelos fixos levemente flexionados',
+                    'Cruze os punhos na frente do peito — comprima o peitoral 2 segundos',
+                    'Abra lentamente até sentir alongamento — não deixe o peso tracionar o ombro',
+                  ],
+                  tip: 'Polia na altura dos ombros = peitoral médio. Acima = inferior. Abaixo = superior. Varie a altura para estimular diferentes porções.',
+                },
+              ],
+            },
+            {
               name: 'Mergulho & Complementares',
               icon: '⬇️',
               color: '#9F7AEA',
