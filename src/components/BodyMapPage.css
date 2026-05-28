@@ -108,16 +108,15 @@
   flex-shrink: 0;
 }
 
-.bmp-body-lib {
-  display: flex;
-  justify-content: center;
-  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+.bmp-svg {
+  width: 260px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.4));
 }
 
-.bmp-body-lib svg {
-  display: block;
-  transform: scaleX(1.4) scaleY(0.88);
-  transform-origin: center top;
+.muscle-region {
+  transition: opacity 0.2s;
 }
 
 /* ─── Legend chips ────────────────────────────────────────── */
