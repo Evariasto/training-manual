@@ -9,6 +9,7 @@ import { DORSAIS_PROTOCOL } from './data/dorsaisprotocol.js'
 import { PEITORAL_PROTOCOL } from './data/peitoralprotocol.js'
 import { OMBROS_PROTOCOL } from './data/ombrosprotocol.js'
 import { BRACOS_PROTOCOL } from './data/bracosprotocol.js'
+import { CORE_PROTOCOL } from './data/coreprotocol.js'
 import './App.css'
 
 const MODULES = [
@@ -19,6 +20,7 @@ const MODULES = [
   { id: 'mod5', number: 5, label: 'Protocolo Peito',   icon: '🫁', desc: '5 capítulos sobre peitoral',                color: '#E53E3E' },
   { id: 'mod6', number: 6, label: 'Protocolo Ombros',  icon: '🔥', desc: '5 capítulos sobre deltoides',              color: '#9F7AEA' },
   { id: 'mod7', number: 7, label: 'Protocolo Braços',  icon: '💪', desc: '5 capítulos — bíceps, tríceps e braquial', color: '#ED8936' },
+  { id: 'mod8', number: 8, label: 'Protocolo Core',   icon: '🎯', desc: '4 capítulos — abdômen e core completo',  color: '#6366F1' },
 ]
 
 export default function App() {
@@ -139,6 +141,7 @@ export default function App() {
           {activeModule === 'mod5' && <ProtocolPage key="peito"   protocol={PEITORAL_PROTOCOL} />}
           {activeModule === 'mod6' && <ProtocolPage key="ombros"  protocol={OMBROS_PROTOCOL} />}
           {activeModule === 'mod7' && <ProtocolPage key="bracos"  protocol={BRACOS_PROTOCOL} />}
+          {activeModule === 'mod8' && <ProtocolPage key="core"    protocol={CORE_PROTOCOL} />}
         </main>
       </div>
     </div>
