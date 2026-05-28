@@ -1,11 +1,11 @@
 // ─── Muscle group accent colors (matches muscles.js) ───────────────
 export const GROUP_COLORS = {
-  peito:             '#E53E3E',
-  costas:            '#3182CE',
-  ombros:            '#9F7AEA',
-  bracos:            '#ED8936',
-  'membros-inferiores': '#48BB78',
-  core:              '#F6AD55',
+  peito:             '#A855F7',
+  costas:            '#3B82F6',
+  ombros:            '#818CF8',
+  bracos:            '#06B6D4',
+  'membros-inferiores': '#10B981',
+  core:              '#6366F1',
 }
 
 // ─── Info displayed in the detail panel ────────────────────────────
