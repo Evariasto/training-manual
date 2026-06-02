@@ -58,7 +58,7 @@ export default function App() {
       <header className="app-header">
         {hasSidebar && (
           <button className="ham-btn" onClick={() => setSidebarOpen(o => !o)} aria-label="Menu grupos">
-            <span className={ham-icon + (sidebarOpen ? 'open' : '')}>
+            <span className={`ham-icon ${sidebarOpen ? 'open' : ''}`}>
               <span /><span /><span />
             </span>
           </button>
@@ -74,7 +74,7 @@ export default function App() {
         </div>
         <nav className="header-modules">
           {MODULES.map(m => (
-            <button key={m.id} className={hmod-btn +(activeModule===m.id?'active':'')} style={activeModule===m.id?{'--mc':m.color}:{}} onClick={() => handleModuleSelect(m.id)} title={m.desc}>
+            <button key={m.id} className={`hmod-btn ${activeModule===m.id?'active':''}`} style={activeModule===m.id?{'--mc':m.color}:{}} onClick={() => handleModuleSelect(m.id)} title={m.desc}>
               <span className="hmod-num">Módulo {m.number}</span>
               <span className="hmod-icon">{m.icon}</span>
               <span className="hmod-label">{m.label}</span>
@@ -86,7 +86,7 @@ export default function App() {
       {menuOpen && (
         <div className="module-dropdown">
           {MODULES.map(m => (
-            <button key={m.id} className={mdrop-btn +(activeModule===m.id?'active':'')} style={{'--mc':m.color}} onClick={() => handleModuleSelect(m.id)}>
+            <button key={m.id} className={`mdrop-btn ${activeModule===m.id?'active':''}`} style={{'--mc':m.color}} onClick={() => handleModuleSelect(m.id)}>
               <div className="mdrop-num-wrap"><span className="mdrop-num">{m.number}</span></div>
               <div className="mdrop-text">
                 <span className="mdrop-icon">{m.icon}</span>
