@@ -5,6 +5,20 @@ export default function Sidebar({ groups, activeId, onSelect, isOpen, onTrainer,
   return (
     <nav className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-inner">
+
+        {/* ── Área do Treinador — topo ── */}
+        <div className="trainer-zone trainer-zone-top">
+          <div className="trainer-zone-label">⭐ Área do Treinador</div>
+          <button
+            className={`trainer-zone-btn ${trainerActive ? 'active' : ''}`}
+            onClick={onTrainer}
+          >
+            <span className="tz-icon">📋</span>
+            <span className="tz-label">Meu Treino</span>
+          </button>
+        </div>
+
+        {/* ── Grupos Musculares ── */}
         <div className="sidebar-title">Grupos Musculares</div>
         <ul className="group-list">
           {groups.map(g => (
@@ -21,18 +35,6 @@ export default function Sidebar({ groups, activeId, onSelect, isOpen, onTrainer,
             </li>
           ))}
         </ul>
-
-        {/* ── Área do Treinador ── */}
-        <div className="trainer-zone">
-          <div className="trainer-zone-label">⭐ Área do Treinador</div>
-          <button
-            className={`trainer-zone-btn ${trainerActive ? 'active' : ''}`}
-            onClick={onTrainer}
-          >
-            <span className="tz-icon">📋</span>
-            <span className="tz-label">Meu Treino</span>
-          </button>
-        </div>
 
         <div className="sidebar-footer">
           <div className="sidebar-footer-text">Training Manual v1.0</div>

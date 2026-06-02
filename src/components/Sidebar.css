@@ -112,6 +112,15 @@
   border-top: 1px solid rgba(246,173,85,0.2);
 }
 
+/* Versão no topo — borda em baixo, sem margin-top */
+.trainer-zone-top {
+  margin-top: 0;
+  padding: 6px 0 8px;
+  border-top: none;
+  border-bottom: 1px solid rgba(246,173,85,0.2);
+  margin-bottom: 4px;
+}
+
 .trainer-zone-label {
   font-size: 9.5px;
   font-weight: 900;
