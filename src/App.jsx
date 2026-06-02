@@ -4,6 +4,7 @@ import MuscleGroupPage from './components/MuscleGroupPage.jsx'
 import BodyMapPage from './components/BodyMapPage.jsx'
 import ProtocolPage from './components/ProtocolPage.jsx'
 import PlannerPage from './components/PlannerPage.jsx'
+import TrainerArea from './components/TrainerArea.jsx'
 import { muscleGroups } from './data/muscles.js'
 import { LEGS_PROTOCOL } from './data/legsprotocol.js'
 import { DORSAIS_PROTOCOL } from './data/dorsaisprotocol.js'
@@ -34,7 +35,7 @@ export default function App() {
 
   const activeGroup = muscleGroups.find(g => g.id === activeGroupId) || muscleGroups[0]
   const activeMod = MODULES.find(m => m.id === activeModule)
-  const hasSidebar = activeModule === 'mod1'
+  const hasSidebar = activeModule === 'mod1' || activeModule === 'mod10'
 
   function handleSelectGroup(id) {
     setActiveGroupId(id)
@@ -103,7 +104,7 @@ export default function App() {
 
       <div className="app-body">
         {hasSidebar && (
-          <Sidebar groups={muscleGroups} activeId={activeGroupId} onSelect={handleSelectGroup} isOpen={sidebarOpen} />
+          <Sidebar groups={muscleGroups} activeId={activeGroupId} onSelect={handleSelectGroup} isOpen={sidebarOpen} onTrainer={() => handleModuleSelect('mod10')} trainerActive={activeModule === 'mod10'} />
         )}
         <main className={`app-main ${hasSidebar ? 'with-sidebar' : ''}`}>
           <ErrorBoundary key={activeModule}>
@@ -116,6 +117,7 @@ export default function App() {
             {activeModule === 'mod7' && <ProtocolPage key="bracos"  protocol={BRACOS_PROTOCOL} />}
             {activeModule === 'mod8' && <ProtocolPage key="core"    protocol={CORE_PROTOCOL} />}
             {activeModule === 'mod9' && <PlannerPage />}
+          {activeModule === 'mod10' && <TrainerArea />}
           </ErrorBoundary>
         </main>
       </div>
