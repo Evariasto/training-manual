@@ -1,113 +1,69 @@
 import React from 'react'
-import Body from 'react-muscle-highlighter'
+import { FRONT_REGIONS, BACK_REGIONS, BODY_SILHOUETTE, GROUP_COLORS } from '../data/bodymap.js'
 
-// Map our exercise muscle IDs → library slugs per view
-const SLUGS = {
-  'peitoral-clavicular': {
-    front: { pri: ['chest'], sec: ['deltoids'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'peitoral-esternal': {
-    front: { pri: ['chest'], sec: ['deltoids', 'biceps'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'peitoral-menor': {
-    front: { pri: ['chest'], sec: [], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'latissimo': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['upper-back'], sec: ['triceps'], sup: ['trapezius', 'deltoids'] },
-  },
-  'trapezio': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['trapezius'], sec: ['deltoids'], sup: ['upper-back'] },
-  },
-  'romboides': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['upper-back'], sec: ['trapezius', 'deltoids'], sup: [] },
-  },
-  'deltoide-anterior': {
-    front: { pri: ['deltoids'], sec: ['chest'], sup: ['biceps'] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'deltoide-lateral': {
-    front: { pri: ['deltoids'], sec: [], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'deltoide-posterior': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['deltoids'], sec: ['upper-back'], sup: ['trapezius'] },
-  },
-  'biceps': {
-    front: { pri: ['biceps'], sec: ['forearm'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'triceps': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['triceps'], sec: ['deltoids'], sup: [] },
-  },
-  'braquial': {
-    front: { pri: ['biceps'], sec: [], sup: ['forearm'] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'quadriceps': {
-    front: { pri: ['quadriceps'], sec: ['adductors'], sup: ['tibialis'] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'isquiotibiais': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['hamstring'], sec: ['gluteal', 'calves'], sup: [] },
-  },
-  'gluteos': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['gluteal'], sec: ['hamstring'], sup: ['lower-back'] },
-  },
-  'panturrilha': {
-    front: { pri: [], sec: [], sup: [] },
-    back:  { pri: ['calves'], sec: ['hamstring'], sup: [] },
-  },
-  'adutores': {
-    front: { pri: ['adductors'], sec: ['quadriceps'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'reto-abdominal': {
-    front: { pri: ['abs'], sec: ['obliques'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'obliquos': {
-    front: { pri: ['obliques'], sec: ['abs'], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
-  'transverso': {
-    front: { pri: ['abs', 'obliques'], sec: [], sup: [] },
-    back:  { pri: [], sec: [], sup: [] },
-  },
+// Maps muscleId (from muscles.js) to bodymap group id
+const MUSCLE_TO_GROUP = {
+  // Peito
+  'peitoral-clavicular': 'peito',
+  'peitoral-esternal':   'peito',
+  'peitoral-menor':      'peito',
+  // Costas
+  'latissimo':           'costas',
+  'trapezio':            'costas',
+  'romboides':           'costas',
+  'redondo-maior':       'costas',
+  'eretores':            'costas',
+  // Ombros
+  'deltoide-anterior':   'ombros',
+  'deltoide-lateral':    'ombros',
+  'deltoide-posterior':  'ombros',
+  'manguito':            'ombros',
+  // Braços
+  'biceps':              'bracos',
+  'triceps':             'bracos',
+  'braquial':            'bracos',
+  'braquiorradial':      'bracos',
+  // Membros inferiores
+  'quadriceps':          'membros-inferiores',
+  'isquiotibiais':       'membros-inferiores',
+  'gluteos':             'membros-inferiores',
+  'panturrilha':         'membros-inferiores',
+  'adutores':            'membros-inferiores',
+  // Core
+  'reto-abdominal':      'core',
+  'obliquos':            'core',
+  'transverso':          'core',
 }
 
-function rgba(hex, a) {
-  const r = parseInt(hex.slice(1, 3), 16)
-  const g = parseInt(hex.slice(3, 5), 16)
-  const b = parseInt(hex.slice(5, 7), 16)
-  return `rgba(${r},${g},${b},${a})`
-}
-
-export default function AnatomySVG({ muscleId, forcedView = 'front', groupColor = '#E53E3E' }) {
-  const m = SLUGS[muscleId]?.[forcedView] || { pri: [], sec: [], sup: [] }
-
-  const data = [
-    ...m.pri.map(slug => ({ slug, color: groupColor })),
-    ...m.sec.map(slug => ({ slug, color: rgba(groupColor, 0.68) })),
-    ...m.sup.map(slug => ({ slug, color: rgba(groupColor, 0.40) })),
-  ]
+export default function AnatomySVG({ muscleId, forcedView = 'front', groupColor }) {
+  const groupId = MUSCLE_TO_GROUP[muscleId]
+  const color = groupColor || GROUP_COLORS[groupId] || '#E53E3E'
+  const regions = forcedView === 'front' ? FRONT_REGIONS : BACK_REGIONS
 
   return (
-    <Body
-      data={data}
-      side={forcedView}
-      scale={1}
-      border="#303050"
-      defaultFill="#1C1C2E"
-    />
+    <svg viewBox="0 0 200 420" style={{ width: '100%', maxWidth: 160, display: 'block' }}
+      xmlns="http://www.w3.org/2000/svg">
+      <path d={BODY_SILHOUETTE[forcedView]} fill="#1e1e2e" stroke="#2A2A3A" strokeWidth="1" />
+      <circle cx="100" cy="26" r="20" fill="#1e1e2e" stroke="#2A2A3A" strokeWidth="1" />
+      <path d="M91,46 L109,46 L111,64 L89,64 Z" fill="#1a1a28" />
+
+      {regions.map(region => {
+        const isTarget = region.id === groupId
+        const opacity = groupId ? (isTarget ? 0.82 : 0.10) : 0.35
+        const rc = GROUP_COLORS[region.id] || '#888'
+        return region.paths.map((d, i) => (
+          <path key={`${region.id}-${i}`} d={d}
+            fill={isTarget ? color : rc}
+            fillOpacity={opacity}
+            stroke={isTarget ? color : rc}
+            strokeWidth={isTarget ? 1.5 : 0.4}
+            strokeOpacity={isTarget ? 0.8 : 0.2}
+          />
+        ))
+      })}
+
+      <path d="M48,394 L44,414 L82,414 L80,394 Z" fill="#1e1e2e" stroke="#2A2A3A" strokeWidth="0.8" />
+      <path d="M152,394 L156,414 L118,414 L120,394 Z" fill="#1e1e2e" stroke="#2A2A3A" strokeWidth="0.8" />
+    </svg>
   )
 }
