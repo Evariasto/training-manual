@@ -213,6 +213,104 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ─── Focus group card (expanded) ────────────────────────── */
+.fg-plus { font-size: 15px; font-weight: 900; color: var(--gc); }
+
+.fg-card {
+  background: color-mix(in srgb, var(--gc) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gc) 20%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fgc-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fgc-rank {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gc); color: #fff;
+  font-size: 11px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.fgc-icon  { font-size: 18px; flex-shrink: 0; }
+.fgc-label { font-size: 14px; font-weight: 800; color: var(--gc); flex: 1; }
+.fgc-count {
+  font-size: 10.5px; font-weight: 700;
+  background: color-mix(in srgb, var(--gc) 15%, transparent);
+  color: var(--gc); padding: 2px 8px; border-radius: 20px;
+}
+.fgc-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+/* Sub-group section */
+.fgc-subs-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: -4px;
+}
+
+.fgc-subs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sub-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+}
+.sub-chip:hover { border-color: var(--gc); }
+.sub-chip.active {
+  background: color-mix(in srgb, var(--gc) 12%, transparent);
+  border-color: var(--gc);
+}
+
+.sub-chip-icon { font-size: 16px; flex-shrink: 0; }
+.sub-chip-text { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sub-chip-label { font-size: 13px; font-weight: 700; color: var(--text); }
+.sub-chip-desc  { font-size: 11px; color: var(--text-muted); line-height: 1.3; }
+.sub-chip.active .sub-chip-label { color: var(--gc); }
+
+.sub-chip-check {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+.sub-chip.active .sub-chip-check { color: var(--gc); }
+
+/* Sub tag in table */
+.sub-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 /* Weaknesses textarea */
 .weakness-textarea {
   width: 100%;

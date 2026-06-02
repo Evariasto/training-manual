@@ -1,42 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   loadTrainer, saveTrainer, defaultTrainer,
-  OBJECTIVES, LEVELS, FOCUS_GROUPS, generateWeekPlan,
-  getLogsForExercise, getLastLoad, uid
+  OBJECTIVES, LEVELS, FOCUS_GROUPS, SUBGROUPS,
+  generateWeekPlan, getLogsForExercise, getLastLoad, uid
 } from '../data/trainerdata.js'
 import './TrainerArea.css'
 
 export default function TrainerArea() {
-  const [tab, setTab]     = useState('config')
-  const [data, setData]   = useState(() => loadTrainer())
+  const [tab, setTab]   = useState('config')
+  const [data, setData] = useState(() => loadTrainer())
 
-  function update(newData) {
-    setData(newData)
-    saveTrainer(newData)
-  }
+  function update(newData) { setData(newData); saveTrainer(newData) }
 
   function handleGenerate() {
-    const plan = generateWeekPlan(data.config)
+    const plan    = generateWeekPlan(data.config)
     const newData = { ...data, weekPlan: plan, config: { ...data.config, lastGenerated: plan.generatedAt } }
     update(newData)
     setTab('ficha')
   }
 
   function handleLogLoad(exerciseName, dayId, sets) {
-    const log = {
-      id: uid(),
-      date: new Date().toISOString().split('T')[0],
-      exerciseName,
-      dayId,
-      sets,
-    }
-    const newLogs = [log, ...data.loadLogs]
-    update({ ...data, loadLogs: newLogs })
+    const log = { id: uid(), date: new Date().toISOString().split('T')[0], exerciseName, dayId, sets }
+    update({ ...data, loadLogs: [log, ...data.loadLogs] })
   }
 
   return (
     <div className="trainer-wrapper">
-      {/* Header */}
       <div className="trainer-header">
         <div className="trainer-header-icon">⭐</div>
         <div className="trainer-header-text">
@@ -45,26 +34,20 @@ export default function TrainerArea() {
         </div>
       </div>
 
-      {/* Tabs */}
       <div className="trainer-tabs">
-        <button className={`ttab ${tab === 'config' ? 'active' : ''}`} onClick={() => setTab('config')}>
-          ⚙️ Configuração
-        </button>
+        <button className={`ttab ${tab === 'config' ? 'active' : ''}`} onClick={() => setTab('config')}>⚙️ Configuração</button>
         <button className={`ttab ${tab === 'ficha' ? 'active' : ''}`} onClick={() => setTab('ficha')}>
-          📋 Ficha Semanal
-          {data.weekPlan && <span className="ttab-badge">✓</span>}
+          📋 Ficha Semanal {data.weekPlan && <span className="ttab-badge">✓</span>}
         </button>
         <button className={`ttab ${tab === 'evolucao' ? 'active' : ''}`} onClick={() => setTab('evolucao')}>
-          📈 Evolução
-          {data.loadLogs.length > 0 && <span className="ttab-badge">{data.loadLogs.length}</span>}
+          📈 Evolução {data.loadLogs.length > 0 && <span className="ttab-badge">{data.loadLogs.length}</span>}
         </button>
       </div>
 
-      {/* Content */}
       <div className="trainer-content">
-        {tab === 'config'  && <ConfigTab data={data} update={update} onGenerate={handleGenerate} />}
-        {tab === 'ficha'   && <FichaTab  data={data} onLogLoad={handleLogLoad} onGenerate={handleGenerate} />}
-        {tab === 'evolucao'&& <EvolucaoTab data={data} />}
+        {tab === 'config'   && <ConfigTab   data={data} update={update} onGenerate={handleGenerate} />}
+        {tab === 'ficha'    && <FichaTab    data={data} onLogLoad={handleLogLoad} onGenerate={handleGenerate} />}
+        {tab === 'evolucao' && <EvolucaoTab data={data} />}
       </div>
     </div>
   )
@@ -76,21 +59,27 @@ export default function TrainerArea() {
 function ConfigTab({ data, update, onGenerate }) {
   const cfg = data.config
 
-  function setCfg(key, val) {
-    update({ ...data, config: { ...cfg, [key]: val } })
-  }
+  function setCfg(key, val) { update({ ...data, config: { ...cfg, [key]: val } }) }
 
   function toggleFocusGroup(id) {
     const exists = cfg.focusGroups.find(g => g.id === id)
     if (exists) {
       setCfg('focusGroups', cfg.focusGroups.filter(g => g.id !== id))
     } else {
-      setCfg('focusGroups', [...cfg.focusGroups, { id, priority: cfg.focusGroups.length + 1, note: '' }])
+      setCfg('focusGroups', [...cfg.focusGroups, { id, priority: cfg.focusGroups.length + 1, note: '', subgroups: [] }])
     }
   }
 
-  function setGroupNote(id, note) {
-    setCfg('focusGroups', cfg.focusGroups.map(g => g.id === id ? { ...g, note } : g))
+  function updateFg(id, patch) {
+    setCfg('focusGroups', cfg.focusGroups.map(g => g.id === id ? { ...g, ...patch } : g))
+  }
+
+  function toggleSubgroup(groupId, subId) {
+    const fg = cfg.focusGroups.find(g => g.id === groupId)
+    if (!fg) return
+    const subs = fg.subgroups || []
+    const next = subs.includes(subId) ? subs.filter(s => s !== subId) : [...subs, subId]
+    updateFg(groupId, { subgroups: next })
   }
 
   function moveGroup(id, dir) {
@@ -141,38 +130,75 @@ function ConfigTab({ data, update, onGenerate }) {
 
       {/* Focus groups */}
       <div className="cfg-block">
-        <div className="cfg-title">💪 Grupos em Foco <span className="cfg-hint">(selecione e ordene por prioridade)</span></div>
+        <div className="cfg-title">💪 Grupos em Foco
+          <span className="cfg-hint"> — selecione o grupo e depois os subgrupos musculares específicos</span>
+        </div>
+
+        {/* Available groups to add */}
         <div className="fg-grid">
           {FOCUS_GROUPS.filter(g => !cfg.focusGroups.find(f => f.id === g.id)).map(g => (
             <button key={g.id} className="fg-add-btn" style={{ '--gc': g.color }}
               onClick={() => toggleFocusGroup(g.id)}>
-              {g.icon} {g.label} <span>+</span>
+              <span>{g.icon}</span> <span>{g.label}</span> <span className="fg-plus">+</span>
             </button>
           ))}
         </div>
 
+        {/* Selected groups — each expands to show sub-muscles */}
         {cfg.focusGroups.length > 0 && (
           <div className="fg-selected">
             {cfg.focusGroups.map((fg, i) => {
-              const gInfo = FOCUS_GROUPS.find(g => g.id === fg.id)
+              const gInfo  = FOCUS_GROUPS.find(g => g.id === fg.id)
+              const subs   = SUBGROUPS[fg.id] || []
+              const selSubs = fg.subgroups || []
+
               return (
-                <div key={fg.id} className="fg-item" style={{ '--gc': gInfo?.color }}>
-                  <div className="fgi-left">
-                    <span className="fgi-rank">{i+1}</span>
-                    <span className="fgi-icon">{gInfo?.icon}</span>
-                    <span className="fgi-label">{gInfo?.label}</span>
+                <div key={fg.id} className="fg-card" style={{ '--gc': gInfo?.color }}>
+                  {/* Group header */}
+                  <div className="fgc-header">
+                    <span className="fgc-rank">{i+1}</span>
+                    <span className="fgc-icon">{gInfo?.icon}</span>
+                    <span className="fgc-label">{gInfo?.label}</span>
+                    {selSubs.length > 0 && (
+                      <span className="fgc-count">{selSubs.length} subgrupo{selSubs.length > 1 ? 's' : ''}</span>
+                    )}
+                    <div className="fgc-actions">
+                      <button className="fgi-move" onClick={() => moveGroup(fg.id, -1)} disabled={i === 0}>▲</button>
+                      <button className="fgi-move" onClick={() => moveGroup(fg.id, 1)} disabled={i === cfg.focusGroups.length-1}>▼</button>
+                      <button className="fgi-del" onClick={() => toggleFocusGroup(fg.id)}>✕</button>
+                    </div>
                   </div>
+
+                  {/* Sub-muscle checkboxes */}
+                  <div className="fgc-subs-title">Selecione as porções / subgrupos:</div>
+                  <div className="fgc-subs-grid">
+                    {subs.map(sub => {
+                      const isSelected = selSubs.includes(sub.id)
+                      return (
+                        <button
+                          key={sub.id}
+                          className={`sub-chip ${isSelected ? 'active' : ''}`}
+                          style={{ '--gc': gInfo?.color }}
+                          onClick={() => toggleSubgroup(fg.id, sub.id)}
+                        >
+                          <span className="sub-chip-icon">{sub.icon}</span>
+                          <div className="sub-chip-text">
+                            <span className="sub-chip-label">{sub.label}</span>
+                            <span className="sub-chip-desc">{sub.desc}</span>
+                          </div>
+                          <span className="sub-chip-check">{isSelected ? '✓' : '+'}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {/* Note */}
                   <input
                     className="fgi-note"
-                    placeholder="O que precisa melhorar? (ex: porção superior fraca)"
+                    placeholder={`Observação para ${gInfo?.label} (ex: porção superior sempre fraca...)`}
                     value={fg.note}
-                    onChange={e => setGroupNote(fg.id, e.target.value)}
+                    onChange={e => updateFg(fg.id, { note: e.target.value })}
                   />
-                  <div className="fgi-actions">
-                    <button className="fgi-move" onClick={() => moveGroup(fg.id, -1)} disabled={i===0}>▲</button>
-                    <button className="fgi-move" onClick={() => moveGroup(fg.id, 1)} disabled={i===cfg.focusGroups.length-1}>▼</button>
-                    <button className="fgi-del" onClick={() => toggleFocusGroup(fg.id)}>✕</button>
-                  </div>
                 </div>
               )
             })}
@@ -180,9 +206,9 @@ function ConfigTab({ data, update, onGenerate }) {
         )}
       </div>
 
-      {/* Weaknesses text */}
+      {/* Weaknesses */}
       <div className="cfg-block">
-        <div className="cfg-title">📝 Pontos Fracos & Observações</div>
+        <div className="cfg-title">📝 Pontos Fracos & Observações Gerais</div>
         <textarea
           className="weakness-textarea"
           placeholder="Descreva o que está travado ou precisa de atenção especial. Ex: VMO muito fraco, deltóide posterior sub-desenvolvido, posterior de coxa sem força..."
@@ -192,14 +218,10 @@ function ConfigTab({ data, update, onGenerate }) {
         />
       </div>
 
-      {/* Generate button */}
-      <button className="generate-btn" onClick={onGenerate}>
-        ⭐ Gerar Ficha Semanal
-      </button>
-
+      <button className="generate-btn" onClick={onGenerate}>⭐ Gerar Ficha Semanal</button>
       {cfg.lastGenerated && (
         <div className="last-gen">
-          Último plano gerado: {new Date(cfg.lastGenerated).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' })}
+          Último plano: {new Date(cfg.lastGenerated).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' })}
         </div>
       )}
     </div>
@@ -211,8 +233,7 @@ function ConfigTab({ data, update, onGenerate }) {
 // ══════════════════════════════════════════════════════════════════
 function FichaTab({ data, onLogLoad, onGenerate }) {
   const [activeDay, setActiveDay] = useState(0)
-  const [logModal, setLogModal]   = useState(null) // {exerciseName, dayId, sets}
-
+  const [logModal, setLogModal]   = useState(null)
   const plan = data.weekPlan
 
   if (!plan) {
@@ -221,9 +242,7 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
         <div className="fe-icon">📋</div>
         <div className="fe-text">Nenhuma ficha gerada ainda</div>
         <div className="fe-sub">Configure seus focos e clique em Gerar Ficha Semanal</div>
-        <button className="generate-btn" style={{ marginTop: 16 }} onClick={onGenerate}>
-          ⭐ Gerar Ficha Agora
-        </button>
+        <button className="generate-btn" style={{ marginTop: 16 }} onClick={onGenerate}>⭐ Gerar Ficha Agora</button>
       </div>
     )
   }
@@ -232,7 +251,6 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
 
   return (
     <div className="ficha-tab">
-      {/* Plan summary */}
       <div className="plan-summary">
         <div className="ps-chips">
           <span className="ps-chip gold">⭐ {plan.objective?.label}</span>
@@ -241,31 +259,25 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
           <span className="ps-chip muted">Sem. {plan.weekNumber}</span>
         </div>
         {plan.focusSummary?.length > 0 && (
-          <div className="ps-focus">
-            Focos: {plan.focusSummary.join(' · ')}
-          </div>
+          <div className="ps-focus">Focos: {plan.focusSummary.join(' · ')}</div>
         )}
         {plan.weaknessesSummary && (
           <div className="ps-weakness">💬 {plan.weaknessesSummary}</div>
         )}
       </div>
 
-      {/* Day tabs */}
       <div className="day-tabs">
         {plan.days.map((d, i) => (
-          <button key={d.id} className={`day-tab ${activeDay === i ? 'active' : ''}`}
-            onClick={() => setActiveDay(i)}>
+          <button key={d.id} className={`day-tab ${activeDay === i ? 'active' : ''}`} onClick={() => setActiveDay(i)}>
             <span className="dt-id">{d.id}</span>
             <span className="dt-name">{d.name.split('—')[0].trim()}</span>
           </button>
         ))}
       </div>
 
-      {/* Day content */}
       <div className="day-content">
         <div className="day-title">{day.name}</div>
-
-        {day.primaryGroups.map(gid => {
+        {day.groups.map(gid => {
           const exercises = day.exercisesByGroup[gid] || []
           if (!exercises.length) return null
           const gInfo = FOCUS_GROUPS.find(g => g.id === gid)
@@ -277,13 +289,7 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
               </div>
               <table className="ex-table">
                 <thead>
-                  <tr>
-                    <th>Exercício</th>
-                    <th>Séries</th>
-                    <th>Reps</th>
-                    <th>Última Carga</th>
-                    <th></th>
-                  </tr>
+                  <tr><th>Exercício</th><th>Subgrupo</th><th>Séries</th><th>Reps</th><th>Última Carga</th><th></th></tr>
                 </thead>
                 <tbody>
                   {exercises.map((ex, ei) => {
@@ -296,24 +302,21 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
                             {ex.note && <span className="ex-note">{ex.note}</span>}
                           </div>
                         </td>
+                        <td><span className="sub-tag">{ex.subgroup}</span></td>
                         <td className="td-center">{ex.sets}×</td>
                         <td className="td-center">{ex.reps}</td>
                         <td className="td-load">
                           {lastLoad
                             ? <span className="last-load-badge">{lastLoad.maxWeight}kg <span className="load-date">({lastLoad.date})</span></span>
-                            : <span className="no-load">—</span>
-                          }
+                            : <span className="no-load">—</span>}
                         </td>
                         <td>
                           <button className="log-btn" onClick={() => setLogModal({
-                            exerciseName: ex.name,
-                            dayId: day.id,
+                            exerciseName: ex.name, dayId: day.id,
                             sets: Array.from({ length: ex.sets }, (_, i) => ({
                               setNum: i+1, weight: lastLoad?.sets?.[i]?.weight || '', reps: ''
                             }))
-                          })}>
-                            + Carga
-                          </button>
+                          })}>+ Carga</button>
                         </td>
                       </tr>
                     )
@@ -325,14 +328,10 @@ function FichaTab({ data, onLogLoad, onGenerate }) {
         })}
       </div>
 
-      {/* Load modal */}
       {logModal && (
-        <LoadModal
-          modal={logModal}
-          onChange={setLogModal}
+        <LoadModal modal={logModal} onChange={setLogModal}
           onSave={() => { onLogLoad(logModal.exerciseName, logModal.dayId, logModal.sets); setLogModal(null) }}
-          onClose={() => setLogModal(null)}
-        />
+          onClose={() => setLogModal(null)} />
       )}
     </div>
   )
@@ -343,7 +342,6 @@ function LoadModal({ modal, onChange, onSave, onClose }) {
     const sets = modal.sets.map((s, si) => si === i ? { ...s, [field]: val } : s)
     onChange({ ...modal, sets })
   }
-
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={e => e.stopPropagation()}>
@@ -353,32 +351,16 @@ function LoadModal({ modal, onChange, onSave, onClose }) {
           <button className="modal-close" onClick={onClose}>✕</button>
         </div>
         <div className="modal-body">
-          <div className="modal-set-header">
-            <span>Série</span><span>Kg</span><span>Reps</span>
-          </div>
+          <div className="modal-set-header"><span>Série</span><span>Kg</span><span>Reps</span></div>
           {modal.sets.map((s, i) => (
             <div key={i} className="modal-set-row">
               <span className="modal-set-num">{s.setNum}</span>
-              <input
-                type="number"
-                className="modal-input"
-                placeholder="kg"
-                value={s.weight}
-                onChange={e => setSet(i, 'weight', e.target.value)}
-              />
-              <input
-                type="number"
-                className="modal-input"
-                placeholder="reps"
-                value={s.reps}
-                onChange={e => setSet(i, 'reps', e.target.value)}
-              />
+              <input type="number" className="modal-input" placeholder="kg"   value={s.weight} onChange={e => setSet(i, 'weight', e.target.value)} />
+              <input type="number" className="modal-input" placeholder="reps" value={s.reps}   onChange={e => setSet(i, 'reps', e.target.value)} />
             </div>
           ))}
         </div>
-        <button className="modal-save-btn" onClick={onSave}>
-          ✓ Salvar Cargas
-        </button>
+        <button className="modal-save-btn" onClick={onSave}>✓ Salvar Cargas</button>
       </div>
     </div>
   )
@@ -389,7 +371,6 @@ function LoadModal({ modal, onChange, onSave, onClose }) {
 // ══════════════════════════════════════════════════════════════════
 function EvolucaoTab({ data }) {
   const logs = data.loadLogs
-
   if (!logs.length) {
     return (
       <div className="ficha-empty">
@@ -400,7 +381,6 @@ function EvolucaoTab({ data }) {
     )
   }
 
-  // Group by exercise name
   const byExercise = {}
   logs.forEach(log => {
     if (!byExercise[log.exerciseName]) byExercise[log.exerciseName] = []
@@ -410,10 +390,10 @@ function EvolucaoTab({ data }) {
   return (
     <div className="evolucao-tab">
       <div className="evo-header-note">
-        Histórico de cargas máximas por exercício. O plano é reorganizado automaticamente com base na sua evolução.
+        Histórico de cargas por exercício. O plano é automaticamente ajustado com base na sua progressão.
       </div>
       {Object.entries(byExercise).map(([exName, exLogs]) => {
-        const sorted = [...exLogs].sort((a,b) => a.date.localeCompare(b.date))
+        const sorted     = [...exLogs].sort((a,b) => a.date.localeCompare(b.date))
         const maxWeights = sorted.map(l => Math.max(...l.sets.map(s => Number(s.weight) || 0)))
         const first = maxWeights[0]
         const last  = maxWeights[maxWeights.length - 1]
@@ -433,29 +413,20 @@ function EvolucaoTab({ data }) {
                 )}
               </div>
             </div>
-
-            {/* Mini progress bar */}
             <div className="evo-bar-wrap">
               {maxWeights.map((w, i) => (
                 <div key={i} className="evo-bar-col" title={`${sorted[i].date}: ${w}kg`}>
-                  <div className="evo-bar-fill" style={{
-                    height: `${Math.max(10, (w / Math.max(...maxWeights)) * 100)}%`,
-                    background: diff >= 0 ? '#48BB78' : '#E53E3E'
-                  }} />
+                  <div className="evo-bar-fill" style={{ height: `${Math.max(10, (w / Math.max(...maxWeights)) * 100)}%`, background: diff >= 0 ? '#48BB78' : '#E53E3E' }} />
                   <div className="evo-bar-val">{w}</div>
                   <div className="evo-bar-date">{sorted[i].date.slice(5)}</div>
                 </div>
               ))}
             </div>
-
-            {/* Last session detail */}
             <div className="evo-last-detail">
               <span className="evo-last-label">Última sessão ({sorted[sorted.length-1].date}):</span>
               <div className="evo-sets">
                 {sorted[sorted.length-1].sets.map((s, i) => (
-                  <span key={i} className="evo-set-chip">
-                    S{s.setNum}: {s.weight}kg × {s.reps}
-                  </span>
+                  <span key={i} className="evo-set-chip">S{s.setNum}: {s.weight}kg × {s.reps}</span>
                 ))}
               </div>
             </div>
