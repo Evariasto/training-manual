@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 import ExerciseCard from './ExerciseCard.jsx'
+import MuscleModal from './MuscleModal.jsx'
 import './MuscleGroupPage.css'
 
 export default function MuscleGroupPage({ group }) {
   const [activeMuscleId, setActiveMuscleId] = useState(null)
-
-  const activeMuscle = group.muscles.find(m => m.id === activeMuscleId) || null
+  const [modalMuscle, setModalMuscle]       = useState(null)
 
   return (
     <div className="mgp">
+      {/* Modal de anatomia */}
+      {modalMuscle && (
+        <MuscleModal
+          muscle={modalMuscle}
+          groupColor={group.color}
+          onClose={() => setModalMuscle(null)}
+        />
+      )}
+
       {/* Group hero */}
       <div className="mgp-hero" style={{ '--gc': group.color }}>
         <div className="mgp-hero-icon">{group.icon}</div>
@@ -47,7 +56,12 @@ export default function MuscleGroupPage({ group }) {
         {group.muscles
           .filter(m => activeMuscleId === null || m.id === activeMuscleId)
           .map(muscle => (
-            <MuscleCard key={muscle.id} muscle={muscle} color={group.color} />
+            <MuscleCard
+              key={muscle.id}
+              muscle={muscle}
+              color={group.color}
+              onOpenModal={() => setModalMuscle(muscle)}
+            />
           ))
         }
       </div>
@@ -55,49 +69,33 @@ export default function MuscleGroupPage({ group }) {
   )
 }
 
-function MuscleCard({ muscle, color }) {
-  const [showInfo, setShowInfo] = useState(false)
-
+function MuscleCard({ muscle, color, onOpenModal }) {
   return (
     <div className="muscle-card" style={{ '--gc': color }}>
-      {/* Muscle header */}
-      <div className="muscle-card-header">
+
+      {/* Header clicável — abre modal de anatomia */}
+      <button
+        className="muscle-card-header"
+        onClick={onOpenModal}
+        aria-label={`Ver anatomia de ${muscle.name}`}
+      >
         <div className="muscle-header-info">
           <h2 className="muscle-name">{muscle.name}</h2>
           {muscle.scientificName && (
             <div className="muscle-sci">{muscle.scientificName}</div>
           )}
         </div>
-        <button
-          className={`info-toggle ${showInfo ? 'active' : ''}`}
-          onClick={() => setShowInfo(o => !o)}
-          title="Informações do músculo"
-        >
-          ℹ
-        </button>
-      </div>
-
-      {/* Info panel */}
-      {showInfo && (
-        <div className="muscle-info-panel">
-          {muscle.function && (
-            <div className="muscle-info-row">
-              <span className="muscle-info-label">Função</span>
-              <span className="muscle-info-val">{muscle.function}</span>
-            </div>
-          )}
-          {muscle.benefits && muscle.benefits.length > 0 && (
-            <div className="muscle-info-row">
-              <span className="muscle-info-label">Benefícios ao desenvolver</span>
-              <ul className="muscle-benefits">
-                {muscle.benefits.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+        <div className="muscle-anatomy-cta">
+          <svg className="muscle-anatomy-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="8.5" stroke="currentColor" strokeWidth="1.2"/>
+            <path d="M10 6.5C8.6 6.5 7.5 7.6 7.5 9s1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5S11.4 6.5 10 6.5Z"
+              fill="currentColor" fillOpacity=".6"/>
+            <path d="M6 14c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" strokeWidth="1.2"
+              strokeLinecap="round"/>
+          </svg>
+          <span className="muscle-anatomy-label">Ver anatomia</span>
         </div>
-      )}
+      </button>
 
       {/* Exercise count */}
       <div className="muscle-ex-header">

@@ -4,7 +4,7 @@ export const muscleGroups = [
     id: 'peito',
     name: 'Peito',
     icon: '🫁',
-    color: '#E53E3E',
+    color: '#A855F7',
     description: 'O peitoral é o principal músculo do empurrão horizontal e vertical. Responsável pela estética da "armadura" no tronco superior.',
     muscles: [
       {
@@ -210,7 +210,7 @@ export const muscleGroups = [
     id: 'costas',
     name: 'Costas',
     icon: '🔱',
-    color: '#3182CE',
+    color: '#3B82F6',
     description: 'O grupo muscular mais complexo e volumoso do tronco superior. Costas bem desenvolvidas são o diferencial entre atletas. Dividido em largura (latíssimo) e espessura (trapézio/romboides).',
     muscles: [
       {
@@ -426,7 +426,7 @@ export const muscleGroups = [
     id: 'ombros',
     name: 'Ombros',
     icon: '⚡',
-    color: '#9F7AEA',
+    color: '#818CF8',
     description: 'O deltóide é composto por 3 porções independentes que precisam de estímulos diferentes. Ombros desenvolvidos criam a largura visual e enchem o espaço entre pescoço e braços.',
     muscles: [
       {
@@ -588,7 +588,7 @@ export const muscleGroups = [
     id: 'bracos',
     name: 'Braços',
     icon: '💪',
-    color: '#ED8936',
+    color: '#06B6D4',
     description: 'Bíceps, braquial, braquiorradial e tríceps formam o complexo do braço. O tríceps representa 2/3 do volume do braço. Picos de bíceps e cabeça longa do tríceps são os diferenciais estéticos.',
     muscles: [
       {
@@ -797,7 +797,7 @@ export const muscleGroups = [
     id: 'membros-inferiores',
     name: 'Membros Inferiores',
     icon: '🦵',
-    color: '#48BB78',
+    color: '#10B981',
     description: 'O grupo muscular mais volumoso do corpo. Quem ignora pernas nunca será atleta completo. Quadríceps, isquiotibiais, glúteos, adutores e panturrilhas formam a base da pirâmide corporal.',
     muscles: [
       {
@@ -1032,7 +1032,7 @@ export const muscleGroups = [
     id: 'core',
     name: 'Core',
     icon: '🎯',
-    color: '#F6AD55',
+    color: '#6366F1',
     description: 'O core não é apenas o abdômen visível. É um sistema de músculos profundos e superficiais que estabilizam a coluna, transferem força entre membros superiores e inferiores, e criam a "cintura" estética do fisiculturista.',
     muscles: [
       {

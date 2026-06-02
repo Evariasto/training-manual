@@ -68,12 +68,12 @@
 }
 
 .group-btn:hover {
-  background: rgba(229,62,62,0.07);
+  background: rgba(124,58,237,0.07);
   color: var(--text);
 }
 
 .group-btn.active {
-  background: rgba(229,62,62,0.12);
+  background: rgba(124,58,237,0.12);
   border-left-color: var(--gc, var(--red));
   color: var(--text);
   font-weight: 600;
@@ -101,7 +101,7 @@
 }
 
 .group-btn.active .group-count {
-  background: rgba(229,62,62,0.15);
+  background: rgba(124,58,237,0.15);
   color: var(--red);
 }
 
