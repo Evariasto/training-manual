@@ -104,7 +104,7 @@ export default function App() {
         {hasSidebar && (
           <Sidebar groups={muscleGroups} activeId={activeGroupId} onSelect={handleSelectGroup} isOpen={sidebarOpen} />
         )}
-        <main className={pp-main +(hasSidebar?'with-sidebar':'')}>
+        <main className={`app-main ${hasSidebar ? 'with-sidebar' : ''}`}>
           {activeModule === 'mod1' && <MuscleGroupPage group={activeGroup} />}
           {activeModule === 'mod2' && <BodyMapPage />}
           {activeModule === 'mod3' && <ProtocolPage key="legs"    protocol={LEGS_PROTOCOL} />}
