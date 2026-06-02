@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar.jsx'
 import MuscleGroupPage from './components/MuscleGroupPage.jsx'
 import BodyMapPage from './components/BodyMapPage.jsx'
 import ProtocolPage from './components/ProtocolPage.jsx'
+import PlannerPage from './components/PlannerPage.jsx'
 import { muscleGroups } from './data/muscles.js'
 import { LEGS_PROTOCOL } from './data/legsprotocol.js'
 import { DORSAIS_PROTOCOL } from './data/dorsaisprotocol.js'
@@ -19,6 +20,7 @@ const MODULES = [
   { id: 'mod5', number: 5, label: 'Protocolo Peito',   icon: '🫁', desc: '5 capítulos sobre peitoral',                color: '#E53E3E' },
   { id: 'mod6', number: 6, label: 'Protocolo Ombros',  icon: '🔥', desc: '5 capítulos sobre deltoides',              color: '#9F7AEA' },
   { id: 'mod7', number: 7, label: 'Protocolo Braços',  icon: '💪', desc: '5 capítulos — bíceps, tríceps e braquial', color: '#ED8936' },
+  { id: 'mod8', number: 8, label: 'Meu Planejador',   icon: '🗓', desc: 'Crie sua periodização personalizada',       color: '#F6AD55' },
 ]
 
 export default function App() {
@@ -139,6 +141,7 @@ export default function App() {
           {activeModule === 'mod5' && <ProtocolPage key="peito"   protocol={PEITORAL_PROTOCOL} />}
           {activeModule === 'mod6' && <ProtocolPage key="ombros"  protocol={OMBROS_PROTOCOL} />}
           {activeModule === 'mod7' && <ProtocolPage key="bracos"  protocol={BRACOS_PROTOCOL} />}
+          {activeModule === 'mod8' && <PlannerPage />}
         </main>
       </div>
     </div>
