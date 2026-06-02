@@ -11,6 +11,7 @@ import { PEITORAL_PROTOCOL } from './data/peitoralprotocol.js'
 import { OMBROS_PROTOCOL } from './data/ombrosprotocol.js'
 import { BRACOS_PROTOCOL } from './data/bracosprotocol.js'
 import { CORE_PROTOCOL } from './data/coreprotocol.js'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 import './App.css'
 
 const MODULES = [
@@ -105,15 +106,17 @@ export default function App() {
           <Sidebar groups={muscleGroups} activeId={activeGroupId} onSelect={handleSelectGroup} isOpen={sidebarOpen} />
         )}
         <main className={`app-main ${hasSidebar ? 'with-sidebar' : ''}`}>
-          {activeModule === 'mod1' && <MuscleGroupPage group={activeGroup} />}
-          {activeModule === 'mod2' && <BodyMapPage />}
-          {activeModule === 'mod3' && <ProtocolPage key="legs"    protocol={LEGS_PROTOCOL} />}
-          {activeModule === 'mod4' && <ProtocolPage key="dorsais" protocol={DORSAIS_PROTOCOL} />}
-          {activeModule === 'mod5' && <ProtocolPage key="peito"   protocol={PEITORAL_PROTOCOL} />}
-          {activeModule === 'mod6' && <ProtocolPage key="ombros"  protocol={OMBROS_PROTOCOL} />}
-          {activeModule === 'mod7' && <ProtocolPage key="bracos"  protocol={BRACOS_PROTOCOL} />}
-          {activeModule === 'mod8' && <ProtocolPage key="core"    protocol={CORE_PROTOCOL} />}
-          {activeModule === 'mod9' && <PlannerPage />}
+          <ErrorBoundary key={activeModule}>
+            {activeModule === 'mod1' && <MuscleGroupPage group={activeGroup} />}
+            {activeModule === 'mod2' && <BodyMapPage />}
+            {activeModule === 'mod3' && <ProtocolPage key="legs"    protocol={LEGS_PROTOCOL} />}
+            {activeModule === 'mod4' && <ProtocolPage key="dorsais" protocol={DORSAIS_PROTOCOL} />}
+            {activeModule === 'mod5' && <ProtocolPage key="peito"   protocol={PEITORAL_PROTOCOL} />}
+            {activeModule === 'mod6' && <ProtocolPage key="ombros"  protocol={OMBROS_PROTOCOL} />}
+            {activeModule === 'mod7' && <ProtocolPage key="bracos"  protocol={BRACOS_PROTOCOL} />}
+            {activeModule === 'mod8' && <ProtocolPage key="core"    protocol={CORE_PROTOCOL} />}
+            {activeModule === 'mod9' && <PlannerPage />}
+          </ErrorBoundary>
         </main>
       </div>
     </div>
